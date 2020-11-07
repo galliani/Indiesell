@@ -17,6 +17,10 @@ class ProductDashboard < Administrate::BaseDashboard
     serial_number: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+
+    # Attachments
+    display_picture:  Field::ActiveStorage,
+    images:           Field::ActiveStorage,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -43,6 +47,8 @@ class ProductDashboard < Administrate::BaseDashboard
   serial_number
   created_at
   updated_at
+  display_picture
+  images
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -55,6 +61,8 @@ class ProductDashboard < Administrate::BaseDashboard
   price_currency
   is_live
   serial_number
+  display_picture
+  images
   ].freeze
 
   # COLLECTION_FILTERS
@@ -75,4 +83,10 @@ class ProductDashboard < Administrate::BaseDashboard
   # def display_resource(product)
   #   "Product ##{product.id}"
   # end
+  # permitted for has_many_attached
+
+  # WORKAROUND for administrate-field-active_storage gem
+  def permitted_attributes
+    super + [:images => []]
+  end
 end

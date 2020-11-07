@@ -4,7 +4,12 @@ Rails.application.routes.draw do
       get :dashboard
     end
 
-    resources :products
+    resources :products do
+      member do
+        delete :display_picture,  action: :remove_display_picture
+        delete :images,           action: :remove_image
+      end
+    end
 
     root to: 'pages#dashboard'
   end

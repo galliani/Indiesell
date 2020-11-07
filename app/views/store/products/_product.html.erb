@@ -6,9 +6,7 @@
           <div class="productimage">
             <figure class="image">
               <a href="<%= root_path %>">
-                <% if product.respond_to? :image %>
-                  <image src="<%= product.image.url(:large) %>"></image>
-                <% end %>
+                <%= image_tag product.display_picture %>
             </a>
             </figure>
           </div>

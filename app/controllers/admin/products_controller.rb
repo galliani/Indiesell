@@ -44,5 +44,19 @@ module Admin
 
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
     # for more information
+
+    def remove_display_picture
+      attachment = requested_resource.display_picture
+      attachment.purge
+
+      redirect_back(fallback_location: requested_resource)
+    end
+
+    def remove_image
+      attachment = requested_resource.images.find(params[:attachment_id])
+      attachment.purge
+
+      redirect_back(fallback_location: requested_resource)
+    end
   end
 end
