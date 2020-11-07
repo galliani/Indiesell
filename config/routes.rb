@@ -7,10 +7,10 @@ Rails.application.routes.draw do
     resources :products
   end
   namespace :store do
-    # resources :products
+    resources :products, only: [:index, :show]
   end
 
-  root to: 'admin/pages#dashboard'
+  root to: 'store/products#index'
 
   # Exceptions routing
   get '/404', to: 'errors#not_found'

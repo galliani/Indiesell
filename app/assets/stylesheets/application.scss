@@ -1,1 +1,132 @@
 @import "bootstrap";
+
+body.shop {
+  .stripe-button-el {
+    display: none;
+  }
+  nav {
+    padding: 2em;
+    p {
+      a {
+
+      }
+    }
+  }
+  .hero {
+    position: relative;
+    padding: 3em 0;
+    border-top: 1px solid #EEE;
+
+    .product {
+      max-width: 900px;
+      margin: 0 auto;
+      .column {
+        .productimage {
+          padding: 1em;
+          figure {
+            margin-top: auto;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+          }
+        }
+        .productdetails {
+          padding: 1em;
+          padding-top: 3em;
+          h1 {
+            font-size: 3em;
+            font-weight: bold;
+            line-height: 1em;
+            padding-top: 0.3em;
+            padding-bottom: 0.3em;
+            a {
+              color: #000;
+            }
+          }
+          p.downloadtype {
+            font-weight: bold;
+          }
+          p.intro {
+            font-size: 1.5em;
+            padding-bottom: 1em;
+            line-height: 1.3em;
+          }
+          .buynow {
+            a.button {
+              margin-top: 1em;
+            }
+          }
+        }
+      }
+    }
+  }
+  .fulldetails {
+    background: #EEE;
+    margin-bottom: -3em;
+    min-height: 5em;
+    margin-top: -7em;
+    .inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 6em 1em 5em 1em;
+      .markdown {
+        font-size: 1.3em;
+        p, ul, ol {
+          margin-bottom: 1em;
+        }
+      }
+    }
+  }
+  .success {
+    border-top: 1px solid #EEE;
+    padding: 2em;
+    padding-bottom: 1em;
+    margin: 0 auto;
+    line-height: 2em;
+    h1 {
+      font-size: 2em;
+      font-weight: bold;
+      padding-bottom: 1em;
+    }
+    p {
+      font-size: 1.2em;
+      padding-bottom: 1em;
+    }
+  }
+  footer {
+    background: #333;
+    padding: 1em;
+    color: #FFF;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width : 768px) {
+  body.shop {
+    .hero {
+      padding: 1em;
+      .product {
+        .column {
+          .productimage {
+            padding-left: 6em;
+            padding-right: 6em;
+            padding-bottom: 0;
+          }
+          .productdetails {
+            padding-top: 0;
+            padding-bottom: 1em;
+            h1 {
+              font-size: 2em;
+            }
+          }
+        }
+      }
+    }
+    .fulldetails {
+      margin-top: 0;
+      margin-bottom: 0;
+      .inner {
+        padding: 2em;
+        padding-bottom: 1em;
+      }
+    }
+  }
+}

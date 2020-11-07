@@ -1,0 +1,43 @@
+<div class="hero">
+  <div class="overlay">
+    <div class="product">
+      <div class="columns">
+        <div class="column is-two-fifths">
+          <div class="productimage">
+            <figure class="image">
+              <a href="<%= root_path %>">
+                <% if product.respond_to? :image %>
+                  <image src="<%= product.image.url(:large) %>"></image>
+                <% end %>
+            </a>
+            </figure>
+          </div>
+        </div>
+        <div class="column">
+          <div class="productdetails">
+            <% if product.respond_to? :downloadtype %>
+              <p class="type"><%= product.downloadtype %></p>
+            <% end %>
+            <h1>
+              <a href="<%= root_path %>"><%= product.name %></a>
+            </h1>
+            <p class="intro"><%= product.description %></p>
+
+            <div class="buynow">
+              <form action="/" method="POST">
+                <button class="paywithstripe button is-fullwidth is-info is-medium <%= "is-inverted" if current_cycle == "dark" %>" type="submit">Buy now for <%= product.price.currency.symbol %><%= product.price %></button>
+                <input name="payment[product_id]" type="hidden" value="<%= product.id %>" />
+                <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+                <script class="stripe-button" data-amount="<%= product.price_cents %>" data-currency="<%= product.price.currency %>" data-description="<%= product.name %>" data-image="https://stripe.com/img/documentation/checkout/marketplace.png" data-key="<%= ENV['stripe_publishable_key'] %>" data-locale="auto" data-name="<%= ENV['shop_name'] %>" data-zip-code="true" src="https://checkout.stripe.com/checkout.js"></script>
+              </form>
+
+              <% if product.description.present? && action_name != "shop_show"%>
+                <a class="button is-medium is-info is-outlined is-fullwidth" href="<%= root_path %>">More info</a>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
