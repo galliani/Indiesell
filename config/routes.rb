@@ -4,6 +4,9 @@ Rails.application.routes.draw do
       get :dashboard
     end
   end
+  namespace :store do
+    # resources :products
+  end
 
   root to: 'admin/pages#dashboard'
 
