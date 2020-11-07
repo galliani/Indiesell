@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     controller :pages do
       get :dashboard
     end
+
+    resources :products
   end
   namespace :store do
     # resources :products
