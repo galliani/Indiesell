@@ -28,7 +28,8 @@ gem 'administrate'
 gem 'administrate-field-enum'
 gem 'administrate-field-active_storage'
 gem 'administrate-field-money'
-gem 'administrate-field-date_picker'
+# Currently there is a problem with the assets pipeline for the plugin below
+# gem 'administrate-field-date_picker'
 
 gem 'active_hash'
 gem 'clearance'

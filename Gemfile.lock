@@ -77,10 +77,6 @@ GEM
     administrate-field-active_storage (0.3.5)
       administrate (>= 0.2.2)
       rails (>= 6.0)
-    administrate-field-date_picker (0.2.0)
-      administrate (< 1.0.0)
-      flatpickr_rails (>= 0.0.2, < 1.2.0)
-      rails (>= 4.2, < 7)
     administrate-field-enum (0.0.9)
       administrate (~> 0.12)
     administrate-field-money (0.2.1)
@@ -149,8 +145,6 @@ GEM
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
-    flatpickr_rails (1.1.0)
-      railties (>= 3.0)
     flay (2.7.0)
       erubis (~> 2.7.0)
       ruby_parser (~> 3.0)
@@ -404,7 +398,6 @@ DEPENDENCIES
   active_link_to
   administrate
   administrate-field-active_storage
-  administrate-field-date_picker
   administrate-field-enum
   administrate-field-money
   bootsnap (>= 1.4.2)
