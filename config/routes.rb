@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     end
 
     resources :products
+
+    root to: 'pages#dashboard'
   end
   namespace :store do
     resources :products, only: [:index, :show]
