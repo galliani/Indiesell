@@ -10,7 +10,8 @@ gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.2'
+gem 'mini_magick'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
@@ -24,7 +25,7 @@ gem 'webpacker', '~> 4.0'
 # ADMINISTRATE
 gem 'administrate'
 gem 'administrate-field-enum'
-gem 'administrate-field-active_storage'
+gem 'administrate-field-active_storage', git: 'https://github.com/Dreamersoul/administrate-field-active_storage.git'
 gem 'administrate-field-money'
 # Currently there is a problem with the assets pipeline for the plugin below
 # gem 'administrate-field-date_picker'
