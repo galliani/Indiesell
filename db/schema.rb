@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_07_231332) do
+ActiveRecord::Schema.define(version: 2020_11_14_064502) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -42,6 +42,18 @@ ActiveRecord::Schema.define(version: 2020_11_07_231332) do
     t.string "serial_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "purchases", force: :cascade do |t|
+    t.string "serial_number"
+    t.string "token"
+    t.boolean "is_paid"
+    t.integer "price_cents", limit: 8, default: 0, null: false
+    t.string "price_currency", default: "USD", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["serial_number"], name: "index_purchases_on_serial_number"
+    t.index ["token"], name: "index_purchases_on_token"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

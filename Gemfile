@@ -32,10 +32,14 @@ gem 'administrate-field-money'
 
 gem 'active_hash'
 gem 'clearance'
+gem 'figaro'
 gem 'money-rails'
 gem 'ransack'
 gem 'sucker_punch'
 gem 'wannabe_bool'
+
+# PAYMENT
+ gem 'paypal-checkout-sdk'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,0 +1,11 @@
+development:
+  paypal_client_id: PAYPAL_CLIENT_ID
+  paypal_client_sec: PAYPAL_CLIENT_SEC
+
+test:
+  paypal_client_id: PAYPAL_CLIENT_ID
+  paypal_client_sec: PAYPAL_CLIENT_SEC
+
+production:
+  paypal_client_id: PAYPAL_CLIENT_ID
+  paypal_client_sec: PAYPAL_CLIENT_SEC

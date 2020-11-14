@@ -13,6 +13,13 @@ Rails.application.routes.draw do
 
     root to: 'pages#dashboard'
   end
+
+  namespace :api do
+    namespace :store do
+      resources :purchases
+    end
+  end
+
   namespace :store do
     resources :products, only: [:index, :show]
   end

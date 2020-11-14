@@ -150,6 +150,8 @@ GEM
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
+    figaro (1.2.0)
+      thor (>= 0.14.0, < 2)
     flay (2.7.0)
       erubis (~> 2.7.0)
       ruby_parser (~> 3.0)
@@ -219,6 +221,9 @@ GEM
     parallel (1.19.2)
     parser (2.7.2.0)
       ast (~> 2.4.1)
+    paypal-checkout-sdk (1.0.3)
+      paypalhttp (~> 1.0.0)
+    paypalhttp (1.0.0)
     polyamorous (2.3.2)
       activerecord (>= 5.2.1)
     popper_js (1.16.0)
@@ -416,10 +421,12 @@ DEPENDENCIES
   byebug
   capybara
   clearance
+  figaro
   image_processing (~> 1.2)
   listen (~> 3.2)
   mini_magick
   money-rails
+  paypal-checkout-sdk
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.4)
   ransack

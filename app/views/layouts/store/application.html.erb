@@ -35,6 +35,18 @@
   <footer>
     Copyright &copy; <%= Time.current.year %> <%= ENV['shop_name'] %>
   </footer>
+
+
+  <script src="https://www.paypal.com/sdk/js?client-id=<%= ENV['paypal_client_id'] %>">
+    // Required. Replace SB_CLIENT_ID with your sandbox client ID.
+  </script>
+  <script>
+    paypal.Buttons({
+      env: 'sandbox', // Valid values are sandbox and live.
+      createOrder: async () => {},
+      onApprove: async (data) => {}
+    }).render('#paypal-button-container');
+  </script>   
 </body>
 
 
