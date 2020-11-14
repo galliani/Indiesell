@@ -66,11 +66,11 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara'
+  gem 'capybara-selenium', '~> 0.0.6'
   gem 'rspec-retry'
   gem 'shoulda-matchers'
   gem 'simplecov', '0.16.1', require: false
   gem 'webmock'
-  gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'  
 end
