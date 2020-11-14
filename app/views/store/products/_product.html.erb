@@ -1,12 +1,14 @@
 <div class="hero">
   <div class="overlay">
-    <div class="product">
+    <div class="product" id="product-<%= product.id %>">
       <div class="columns">
         <div class="column is-two-fifths">
           <div class="productimage">
             <figure class="image">
               <a href="<%= root_path %>">
-                <%= image_tag product.display_picture %>
+                <% if product.display_picture.present? %>
+                  <%= image_tag product.display_picture %>
+                <% end %>
             </a>
             </figure>
           </div>
@@ -16,16 +18,17 @@
             <% if product.respond_to? :downloadtype %>
               <p class="type"><%= product.downloadtype %></p>
             <% end %>
-            <h1>
+            <h1 class="product-name">
               <a href="<%= root_path %>"><%= product.name %></a>
             </h1>
+            <h3 class="product-price"><%= product.price %></h3>
             <p class="intro"><%= product.description %></p>
 
             <div class="buynow">
               <div id="paypal-button-container"></div>
 
               <% if product.description.present? && action_name != "shop_show"%>
-                <a class="button is-medium is-info is-outlined is-fullwidth" href="<%= root_path %>">More info</a>
+                <a class="button is-medium is-info is-outlined is-fullwidth" href="<%= store_product_path(product) %>">More info</a>
               <% end %>
             </div>
           </div>
