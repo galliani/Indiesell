@@ -17,7 +17,7 @@ RSpec.describe 'Customer visits store front page', type: :system, js: true do
       expect(subject).to have_text(live_products.first.name)
       expect(subject).to have_text(live_products.second.name)
       expect(subject).to have_text(live_products.third.name)
-      byebug
+
       expect(subject).to have_no_text(draft_product.name)
     end
   end
