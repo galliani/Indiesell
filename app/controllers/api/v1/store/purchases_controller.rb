@@ -38,6 +38,20 @@ module API
           end
         end
 
+        def capture
+          # PAYPAL CAPTURE purchase
+          request   = PayPalCheckoutSdk::Orders::OrdersCaptureRequest::new params[:paypal_order_id]
+          response  = @client.execute request
+
+          purchase          = Purchase.find_by token: params[:paypal_order_id]
+          purchase.is_paid  = response.result.status == 'COMPLETED'
+
+          if purchase.save
+            render  status: :ok,
+                    json: { purchase_code: purchase.id, status: response.result.status }
+          end
+        end
+
         private
 
         def paypal_init

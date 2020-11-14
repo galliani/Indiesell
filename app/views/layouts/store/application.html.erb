@@ -44,13 +44,30 @@
     paypal.Buttons({
       env: 'sandbox', // Valid values are 'sandbox' and 'live'.
       createOrder: async (data) => {
-        const response      = await fetch('/api/v1/store/purchases', { method: 'POST' });
+        const response      = await fetch('/api/v1/store/purchases', {
+          method:   'POST',
+          headers:  { 'Content-Type': 'application/json' },
+        });
         const responseData  = await response.json();
 
         return responseData.token;        
       },
       onApprove: async (data) => {
+        const response = await fetch('/api/v1/store/purchases/capture', {
+          method:   'POST',
+          headers:  { 'Content-Type': 'application/json' },
+          body:     JSON.stringify({ paypal_order_id: data.orderID })
+        });
+        
+        const responseData = await response.json();
 
+        if (responseData.status === 'COMPLETED') {
+          alert('COMPLETED');
+
+          window.location.href = '/store/purchases/' + responseData.purchase_code + '/success';
+        } else {
+          window.location.href = '/store/purchases/failure?purchase_code=' + responseData.purchase_code;
+        }
       }
     }).render('#paypal-button-container');
   </script>   
