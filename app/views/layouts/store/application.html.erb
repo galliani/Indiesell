@@ -42,9 +42,16 @@
   </script>
   <script>
     paypal.Buttons({
-      env: 'sandbox', // Valid values are sandbox and live.
-      createOrder: async () => {},
-      onApprove: async (data) => {}
+      env: 'sandbox', // Valid values are 'sandbox' and 'live'.
+      createOrder: async (data) => {
+        const response      = await fetch('/api/v1/store/purchases', { method: 'POST' });
+        const responseData  = await response.json();
+
+        return responseData.token;        
+      },
+      onApprove: async (data) => {
+
+      }
     }).render('#paypal-button-container');
   </script>   
 </body>

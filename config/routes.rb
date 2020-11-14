@@ -15,8 +15,10 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
-    namespace :store do
-      resources :purchases
+    namespace :v1 do
+      namespace :store do
+        resources :purchases, only: [:create]
+      end
     end
   end
 
