@@ -47,6 +47,8 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+  config.include ActiveJob::TestHelper
+
   config.use_transactional_fixtures = false
 
   # Setup that will be executed for system specs only

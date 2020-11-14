@@ -149,6 +149,11 @@ GEM
     erubi (1.9.0)
     erubis (2.7.0)
     execjs (2.7.0)
+    factory_bot (6.1.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.1.0)
+      factory_bot (~> 6.1.0)
+      railties (>= 5.0.0)
     ffi (1.13.1)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
@@ -425,6 +430,7 @@ DEPENDENCIES
   capybara
   capybara-selenium (~> 0.0.6)
   clearance
+  factory_bot_rails
   figaro
   image_processing (~> 1.2)
   listen (~> 3.2)
