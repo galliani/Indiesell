@@ -1,5 +1,6 @@
 <div class="jumbotron text-center" id="payment-success-message">
   <h1 class="display-3">Payment is Successful</h1>
+  <p><%= @order.purchase_units.first.amount.value %> <%= @order.purchase_units.first.amount.currency_code %></p>
   <p class="lead"><strong>Thank you! Please check your email</strong> for further instructions on how to access your purchase.</p>
   <hr>
   <p>

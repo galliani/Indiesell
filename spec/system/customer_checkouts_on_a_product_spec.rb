@@ -16,9 +16,7 @@ RSpec.describe 'Customer checkouts on a product', type: :system, js: true do # 2
 
     page.should have_selector('#paypal-button-container')
     page.should have_selector 'iframe'
-  end
 
-  it 'should be ok' do
     @parent_iframe = find(paypal_smart_button_iframe)
     
     page.within_frame(@parent_iframe) do
@@ -55,10 +53,18 @@ RSpec.describe 'Customer checkouts on a product', type: :system, js: true do # 2
     end
 
     sleep(10)
-    # The iframe should be gone by now
-    expect(subject).to have_no_selector paypal_smart_button_iframe
-    # Should be redirected to the /success payment page
-    expect(subject).to have_selector    '#payment-success-message'
+  end
+
+  describe 'payment success page' do
+    it 'should be ok' do
+      # The iframe should be gone by now
+      expect(subject).to have_no_selector paypal_smart_button_iframe
+      
+      # Should be redirected to the /success payment page
+      # describe 'payment success page'
+      expect(subject).to have_selector   '#payment-success-message'
+      expect(subject).to have_content    '10.00'
+    end
   end
 
   # These methods are only used in the paypal checkout form for now,

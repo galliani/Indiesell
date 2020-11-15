@@ -4,9 +4,10 @@ module API
   module V1
     module Store
       class PurchasesController < ApplicationController
-        skip_before_action :verify_authenticity_token
+        include PaypalPowered
 
-        before_action :paypal_init
+        skip_before_action  :verify_authenticity_token
+        before_action       :paypal_init
 
         def create
           params[:price_cents]    = '10.00'
