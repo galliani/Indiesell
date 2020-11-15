@@ -62,8 +62,6 @@
         const responseData = await response.json();
 
         if (responseData.status === 'COMPLETED') {
-          alert('COMPLETED');
-
           window.location.href = '/store/purchases/' + responseData.purchase_code + '/success';
         } else {
           window.location.href = '/store/purchases/failure?purchase_code=' + responseData.purchase_code;

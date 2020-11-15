@@ -67,6 +67,7 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara'
   gem 'capybara-selenium', '~> 0.0.6'
+  gem 'selenium-webdriver', '3.142.7'
   gem 'rspec-retry'
   gem 'shoulda-matchers'
   gem 'simplecov', '0.16.1', require: false

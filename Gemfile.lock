@@ -447,6 +447,7 @@ DEPENDENCIES
   rubocop-rails
   rubycritic
   sass-rails (>= 6)
+  selenium-webdriver (= 3.142.7)
   shoulda-matchers
   simplecov (= 0.16.1)
   spring
