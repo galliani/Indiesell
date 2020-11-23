@@ -25,7 +25,9 @@
             <p class="intro"><%= product.description %></p>
 
             <div class="buynow">
-              <div id="paypal-button-container"></div>
+              <paypal-button
+                client-id="<%= ENV['paypal_client_id'] %>"
+              />
 
               <% if product.description.present? && action_name != "shop_show"%>
                 <a class="button is-medium is-info is-outlined is-fullwidth" href="<%= store_product_path(product) %>">More info</a>

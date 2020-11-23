@@ -1,10 +1,10 @@
 const { environment } = require('@rails/webpacker')
-const webpack = require('webpack')
 const { VueLoaderPlugin } = require('vue-loader')
 const vue = require('./loaders/vue')
 
+// We need this append Provide
+const webpack = require('webpack')
 // Add an ProvidePlugin
-
 environment.plugins.prepend('VueLoaderPlugin', new VueLoaderPlugin())
 environment.plugins.append('Provide', new webpack.ProvidePlugin({
   $: 'jquery',

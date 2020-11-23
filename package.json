@@ -2,6 +2,7 @@
   "name": "indiesell",
   "private": true,
   "dependencies": {
+    "@paypal/sdk-client": "^4.0.141",
     "@rails/actioncable": "^6.0.0",
     "@rails/actiontext": "^6.0.3-4",
     "@rails/activestorage": "^6.0.0",

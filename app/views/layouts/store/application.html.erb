@@ -35,40 +35,6 @@
   <footer>
     Copyright &copy; <%= Time.current.year %> <%= ENV['shop_name'] %>
   </footer>
-
-
-  <script src="https://www.paypal.com/sdk/js?client-id=<%= ENV['paypal_client_id'] %>">
-    // Required. Replace SB_CLIENT_ID with your sandbox client ID.
-  </script> 
-  <script>
-    paypal.Buttons({
-      env: 'sandbox', // Valid values are 'sandbox' and 'live'.
-      createOrder: async (data) => {
-        const response      = await fetch('/api/v1/store/purchases', {
-          method:   'POST',
-          headers:  { 'Content-Type': 'application/json' },
-        });
-        const responseData  = await response.json();
-
-        return responseData.token;        
-      },
-      onApprove: async (data) => {
-        const response = await fetch('/api/v1/store/purchases/capture', {
-          method:   'POST',
-          headers:  { 'Content-Type': 'application/json' },
-          body:     JSON.stringify({ paypal_order_id: data.orderID })
-        });
-        
-        const responseData = await response.json();
-
-        if (responseData.status === 'COMPLETED') {
-          window.location.href = '/store/purchases/' + responseData.purchase_code + '/success';
-        } else {
-          window.location.href = '/store/purchases/failure?purchase_code=' + responseData.purchase_code;
-        }
-      }
-    }).render('#paypal-button-container');
-  </script>     
 </body>
 
 
