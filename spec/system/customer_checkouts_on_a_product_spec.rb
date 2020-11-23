@@ -63,7 +63,7 @@ RSpec.describe 'Customer checkouts on a product', type: :system, js: true do # 2
       # Should be redirected to the /success payment page
       # describe 'payment success page'
       expect(subject).to have_selector   '#payment-success-message'
-      expect(subject).to have_content    '10.00'
+      expect(subject).to have_content    "#{product.price.currency.symbol}#{product.price.to_i}"
     end
   end
 

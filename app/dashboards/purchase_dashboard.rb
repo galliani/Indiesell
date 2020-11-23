@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class ProductDashboard < Administrate::BaseDashboard
+class PurchaseDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -9,18 +9,17 @@ class ProductDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     id: Field::Number,
-    name: Field::String,
-    description: Field::Text,
+    product_id: Field::Number,
+    serial_number: Field::String,
+    is_paid: Field::Boolean,
     price_cents: Field::Number,
     price_currency: Field::String,
-    is_live: Field::Boolean,
-    serial_number: Field::String,
+    token: Field::String,
+    gateway_id: Field::Number,
+    gateway_customer_id: Field::String,
+    customer_email: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-
-    # Attachments
-    display_picture:  Field::ActiveStorage,
-    images:           Field::ActiveStorage,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -30,39 +29,41 @@ class ProductDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
   id
-  name
-  description
-  price_cents
+  product_id
+  serial_number
+  is_paid
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
   id
-  name
-  description
+  product_id
+  serial_number
+  is_paid
   price_cents
   price_currency
-  is_live
-  serial_number
+  token
+  gateway_id
+  gateway_customer_id
+  customer_email
   created_at
   updated_at
-  display_picture
-  images
   ].freeze
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
-  name
-  description
+  product_id
+  serial_number
+  is_paid
   price_cents
   price_currency
-  is_live
-  serial_number
-  display_picture
-  images
+  token
+  gateway_id
+  gateway_customer_id
+  customer_email
   ].freeze
 
   # COLLECTION_FILTERS
@@ -77,16 +78,10 @@ class ProductDashboard < Administrate::BaseDashboard
   #   }.freeze
   COLLECTION_FILTERS = {}.freeze
 
-  # Overwrite this method to customize how products are displayed
+  # Overwrite this method to customize how purchases are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(product)
-  #   "Product ##{product.id}"
+  # def display_resource(purchase)
+  #   "Purchase ##{purchase.id}"
   # end
-  # permitted for has_many_attached
-
-  # WORKAROUND for administrate-field-active_storage gem
-  def permitted_attributes
-    super + [:images => []]
-  end
 end

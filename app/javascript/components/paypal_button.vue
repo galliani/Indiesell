@@ -26,14 +26,18 @@ export default {
     productDescription: {
       type: String,
       required: true
-    },    
+    },
+    productId: {
+      type: String,
+      required: true
+    }
   },
   data() {
     return {
       order: {
         description: "",
         amount: {
-          currency_code: "",
+          currency_code: "USD",
           value: 0
         }
       }
@@ -60,7 +64,30 @@ export default {
           },
           onApprove: async (data, actions) => {
             const order = await actions.order.capture();
-            // ajax request
+            // for complete reference of order object: https://developer.paypal.com/docs/api/orders/v2
+
+            const response = await fetch('/api/v1/store/purchases/capture', {
+              method:   'POST',
+              headers:  { 'Content-Type': 'application/json' },
+              body:     JSON.stringify(
+                {
+                  price_cents:    this.priceCents,
+                  price_currency: this.currencyCode,
+                  product_id:     this.productId,
+                  token:          order.orderID,
+                  customer_id:    order.payer.payer_id,
+                  customer_email: order.payer.email_address,
+                  is_successful:  order.status === 'COMPLETED'
+                }
+              )
+            });
+            const responseData = await response.json();
+
+            if (response.status == 200) {
+              window.location.href = '/store/purchases/' + responseData.purchase_code + '/success';
+            } else {
+              window.location.href = '/store/purchases/failure?purchase_code=' + responseData.purchase_code;
+            }
           },
           onError: err => {
             console.log(err);
