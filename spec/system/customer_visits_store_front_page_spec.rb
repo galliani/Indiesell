@@ -27,7 +27,7 @@ RSpec.describe 'Customer visits store front page', type: :system, js: true do
 
     it 'should display checkout button' do
       within("#product-#{sample_product.id}") do
-        expect(subject).to have_selector '#paypal-button-container'
+        expect(subject).to have_css '.buynow'
       end
     end
 
