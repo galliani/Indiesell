@@ -5,21 +5,36 @@
 <script>
 export default {
   props: {
+    currencyCode: {
+      type: String,
+      required: false,
+      default() {
+        return 'USD'
+      }
+    },    
     clientId: {
       type: String,
       required: false,
       default() {
         return ''
       }
-    }         
+    },
+    priceCents: {
+      type: String,
+      required: true
+    },
+    productDescription: {
+      type: String,
+      required: true
+    },    
   },
   data() {
     return {
       order: {
-        description: "Buy thing",
+        description: "",
         amount: {
-          currency_code: "USD",
-          value: 1000
+          currency_code: "",
+          value: 0
         }
       }
     };
@@ -29,6 +44,10 @@ export default {
     script.src = `https://www.paypal.com/sdk/js?client-id=${this.clientId}`;
     script.addEventListener("load", this.setLoaded);
     document.body.appendChild(script);
+
+    this.order.description          = this.productDescription;
+    this.order.amount.currency_code = this.currencyCode;
+    this.order.amount.value         = Number(this.priceCents);
   },
   methods: {
     setLoaded: function() {

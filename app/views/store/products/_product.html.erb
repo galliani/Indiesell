@@ -27,6 +27,9 @@
             <div class="buynow">
               <paypal-button
                 client-id="<%= ENV['paypal_client_id'] %>"
+                currency-code="<%= product.price_currency %>"
+                price-cents="<%= product.price_cents %>"
+                product-description="<%= product.name %>"
               />
 
               <% if product.description.present? && action_name != "shop_show"%>
