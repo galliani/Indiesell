@@ -47,9 +47,6 @@ GEM
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
     active_hash (3.1.0)
       activesupport (>= 5.0.0)
-    active_link_to (1.0.5)
-      actionpack
-      addressable
     activejob (6.0.3.4)
       activesupport (= 6.0.3.4)
       globalid (>= 0.3.6)
@@ -419,7 +416,6 @@ PLATFORMS
 
 DEPENDENCIES
   active_hash
-  active_link_to
   administrate
   administrate-field-active_storage!
   administrate-field-enum

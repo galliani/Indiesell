@@ -16,7 +16,6 @@ gem 'mini_magick'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 # ASSETS
-gem 'active_link_to'
 gem 'bootstrap'
 gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
