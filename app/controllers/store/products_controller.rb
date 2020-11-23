@@ -5,7 +5,7 @@ module Store
     layout 'store/application.html.erb'
 
     def index
-      @products = Product.all        
+      @products = Product.live
     end
   end
 end

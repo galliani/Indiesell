@@ -1,0 +1,134 @@
+{
+  "id": "60Y03567EJ817751N", 
+  "intent": "CAPTURE",
+  "status": "COMPLETED",
+  "purchase_units": [
+    {
+      "table":  {
+        "reference_id": "default",
+        "amount": {
+          "table": {
+            "currency_code": "USD", "value": "10.00"
+          }, 
+          "modifiable": true
+        },
+        "payee": {
+          "table": {"email_address": "sb-crnrw3676654@business.example.com", "merchant_id": "JVQYQQ39DKAUL"},
+          "modifiable": true
+        },
+        "soft_descriptor": "PAYPAL *JOHNDOESTES",
+        "shipping": {
+          "table": {
+            "name": {
+              "table": {"full_name": "First Customer"},
+              "modifiable": true
+            },
+            "address": {
+              "table": {
+                "address_line_1": "Address street 1",
+                "admin_area_2": "Jakarta",
+                "admin_area_1": "AK",
+                "postal_code": "12410",
+                "country_code": "US"
+              },
+              "modifiable": true
+            }
+          },
+          "modifiable": true
+        },
+        "payments": {
+          "table": {
+            "captures": [
+              {
+                "table": {
+                  "id": "2LT917054Y269792M", "status": "COMPLETED", 
+                  "amount": {
+                    "table": {"currency_code": "USD", "value": "10.00"},
+                    "modifiable": true
+                  }, 
+                  "final_capture": true, 
+                  "seller_protection": {
+                    "table": {"status": "NOT_ELIGIBLE"},
+                    "modifiable": true
+                  },
+                  "seller_receivable_breakdown": {
+                    "table": {
+                      "gross_amount": {
+                        "table": {"currency_code": "USD", "value": "10.00"},
+                        "modifiable": true
+                      },
+                      "paypal_fee": {
+                        "table": {"currency_code": "USD", "value": "0.69"},
+                        "modifiable": true
+                      },
+                      "net_amount": {
+                        "table": {"currency_code": "USD", "value": "9.31"},
+                        "modifiable": true
+                      }
+                    },
+                    "modifiable": true
+                  },
+                  "links": [
+                    {
+                      "table": {
+                        "href": "https://api.sandbox.paypal.com/v2/payments/captures/2LT917054Y269792M",
+                        "rel": "self", "method": "GET"
+                      },
+                      "modifiable": true
+                    },
+                    {
+                      "table": {
+                        "href": "https://api.sandbox.paypal.com/v2/payments/captures/2LT917054Y269792M/refund",
+                        "rel": "refund",
+                        "method": "POST"
+                      },
+                      "modifiable": true
+                    },
+                    {
+                      "table": {
+                        "href": "https://api.sandbox.paypal.com/v2/checkout/orders/60Y03567EJ817751N",
+                        "rel": "up",
+                        "method": "GET"
+                      },
+                      "modifiable": true
+                    }
+                  ],
+                  "create_time": "2020-11-15T04:05:49Z", "update_time": "2020-11-15T04:05:49Z"
+                },
+                "modifiable": true
+              }
+            ]
+          },
+          "modifiable": true
+        }
+      },
+      "modifiable": true
+    }
+  ],
+  "payer": {
+    "table": {
+      "name": {
+        "table": {
+          "given_name": "First", "surname": "Customer"
+        },
+        "modifiable": true
+      },
+      "email_address": "customer_1@lorem.com",
+      "payer_id": "YZ2BME8GGUZUE",
+      "address": { "table": {"country_code": "US"}, "modifiable": true }
+    },
+    "modifiable": true
+  },
+  "create_time": "2020-11-15T04:05:31Z",
+  "update_time": "2020-11-15T04:05:49Z",
+  "links": [
+    {
+      "table": {
+        "href": "https://api.sandbox.paypal.com/v2/checkout/orders/60Y03567EJ817751N",
+        "rel": "self",
+        "method": "GET"
+      },
+      "modifiable": true
+    }
+  ]
+}

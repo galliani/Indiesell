@@ -1,0 +1,16 @@
+# you can generate these mock CC on this page: https://developer.paypal.com/developer/creditCardGenerator/
+paypal_mock_cc_no:  'CARD_NO'
+paypal_mock_cc_exp: '00/00'
+paypal_mock_cc_cvv: '123'
+
+development:
+  paypal_client_id: PAYPAL_CLIENT_ID
+  paypal_client_sec: PAYPAL_CLIENT_SEC
+
+test:
+  paypal_client_id: PAYPAL_CLIENT_ID
+  paypal_client_sec: PAYPAL_CLIENT_SEC
+
+production:
+  paypal_client_id: PAYPAL_CLIENT_ID
+  paypal_client_sec: PAYPAL_CLIENT_SEC

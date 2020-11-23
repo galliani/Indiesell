@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% if @product
+   %><title><%= @product.name %> - <%= ENV['shop_name'] %></title>
+  <% else
+   %><title><%= ENV['shop_name'] %></title>
+  <% end %>
+
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+  <%= stylesheet_link_tag     'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_pack_tag     'store', 'data-turbolinks-track': 'reload' %>
+
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div id="simple-error">
+    <div class="simple-error">
+      <div class="simple-error-status-code">
+        <h1>422</h1>
+      </div>
+
+      <h2>Sorry, your payment for the #<%= params[:purchase_code] %> has failed</h2>
+
+      <p>Please go back and try again. If problem persists, please copy the purchase code above and contact the admin.</p>
+
+      <a href="#">Go To Homepage</a>
+    </div>
+  </div>
+</body>
+</html>

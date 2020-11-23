@@ -1,7 +1,14 @@
-// This file is automatically compiled by Webpack, along with any other files
-// present in this directory. You're encouraged to place your actual application logic in
-// a relevant structure within app/javascript and only use these pack files to reference
-// that code so it'll be compiled.
+import Vue from 'vue/dist/vue.esm'
+import { unpackSDKMeta } from '@paypal/sdk-client';
+import PaypalButton from "../components/paypal_button.vue";
 
-require("@rails/ujs").start()
-require("turbolinks").start()
+document.addEventListener('DOMContentLoaded', () => {
+  var storeList = new Vue({
+    el: '#store-list',
+    components: {
+      PaypalButton
+    },    
+    data: {
+    }
+  })
+})

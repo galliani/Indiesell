@@ -7,6 +7,33 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
+# WEBMOCK
+# require 'webmock/rspec'
+# # these lines below required to make chromedriver works
+# WebMock.disable_net_connect!(
+#   allow: [
+#     'chromedriver.storage.googleapis.com',
+#     'localhost',
+#     '127.0.0.1'
+#   ]
+# )
+# Capybara drivers setup
+Capybara.register_driver :chrome do |app|
+  Capybara::Selenium::Driver.new(app, browser: :chrome)
+end
+Capybara.register_driver :headless_chrome do |app|
+  browser_options = ::Selenium::WebDriver::Chrome::Options.new.tap do |opts|
+    opts.args << '--headless'
+  end
+  Capybara::Selenium::Driver.new(
+    app,
+    browser: :chrome,
+    options: browser_options,
+    http_client: Selenium::WebDriver::Remote::Http::Default.new
+  )
+end
+
+
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -31,13 +58,20 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.include ActiveJob::TestHelper
+  config.include FactoryBot::Syntax::Methods
 
-  # If you're not using ActiveRecord, or you'd prefer not to run each of your
-  # examples within a transaction, remove the following line or assign false
-  # instead of true.
   config.use_transactional_fixtures = true
+
+  # Setup that will be executed for system specs only
+  config.before(:each, type: :system) do
+    driven_by :rack_test
+  end
+  config.before(:each, type: :system, js: true) do
+    # :chrome or :headless_chrome for not headless for easier debugging
+    # driven_by :chrome
+    driven_by :headless_chrome
+  end
 
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false

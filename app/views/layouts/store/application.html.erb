@@ -10,11 +10,11 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
   <%= stylesheet_link_tag     'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_pack_tag     'store', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag     'store' %>
 
   <%= csrf_meta_tags %>
 </head>
-<body class="shop <%= "#{controller_name} #{action_name}" %>">
+<body class="shop <%= "#{controller_name} #{action_name}" %>" id="shop_app">
   <nav class="shop">
     <div class="level">
       <div class="level-left">

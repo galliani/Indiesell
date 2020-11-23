@@ -16,7 +16,6 @@ gem 'mini_magick'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 # ASSETS
-gem 'active_link_to'
 gem 'bootstrap'
 gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
@@ -32,15 +31,19 @@ gem 'administrate-field-money'
 
 gem 'active_hash'
 gem 'clearance'
+gem 'figaro'
 gem 'money-rails'
 gem 'ransack'
 gem 'sucker_punch'
 gem 'wannabe_bool'
 
+# PAYMENT
+ gem 'paypal-checkout-sdk'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-
+  gem 'factory_bot_rails'
   gem 'rspec-rails'
   gem 'timecop'
   # Linters
@@ -62,11 +65,12 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara'
+  gem 'capybara-selenium', '~> 0.0.6'
+  gem 'selenium-webdriver', '3.142.7'
   gem 'rspec-retry'
   gem 'shoulda-matchers'
   gem 'simplecov', '0.16.1', require: false
   gem 'webmock'
-  gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'  
 end
