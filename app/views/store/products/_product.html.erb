@@ -1,45 +1,33 @@
-<div class="hero">
-  <div class="overlay">
-    <div class="product" id="product-<%= product.id %>">
-      <div class="columns">
-        <div class="column is-two-fifths">
-          <div class="productimage">
-            <figure class="image">
-              <a href="<%= root_path %>">
-                <% if product.display_picture.present? %>
-                  <%= image_tag product.display_picture %>
-                <% end %>
-            </a>
-            </figure>
-          </div>
-        </div>
-        <div class="column">
-          <div class="productdetails">
-            <% if product.respond_to? :downloadtype %>
-              <p class="type"><%= product.downloadtype %></p>
-            <% end %>
-            <h1 class="product-name">
-              <a href="<%= root_path %>"><%= product.name %></a>
-            </h1>
-            <h3 class="product-price"><%= product.price %></h3>
-            <p class="intro"><%= product.description %></p>
+<div class="row">
+  <div class="col-md-6">
+    <figure class="product-display-picture">
+      <a href="<%= root_path %>">
+        <% if product.display_picture.present? %>
+          <%= image_tag product.display_picture, class: "img-responsive fit-image" %>
+        <% end %>
+      </a>
+    </figure>
+  </div>
+  <div class="col-md-5 col-md-offset-1">
+    <h2 class="product-name"><a href="<%= root_path %>"><%= product.name %></a></h2>
+    <h3 class="product-price header-text">
+      <%= money_without_cents_and_with_symbol product.price %>
+    </h3>
+    <p class="intro"><%= product.description %></p>
 
-            <div class="buynow">
-              <paypal-button
-                client-id="<%= ENV['paypal_client_id'] %>"
-                currency-code="<%= product.price_currency %>"
-                price-cents="<%= product.price_cents %>"
-                product-description="<%= product.name %>"
-                product-id="<%= product.id %>"
-              />
-
-              <% if product.description.present? && action_name != "shop_show"%>
-                <a class="button is-medium is-info is-outlined is-fullwidth" href="<%= store_product_path(product) %>">More info</a>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      </div>
+    <p>
+      <a href="http://www.creative-tim.com/product/awesome-landing-page" id="Demo3" class="btn btn-fill btn-info" data-button="info">View detail</a>      
+    </p>
+    <br>
+    <hr>
+    <div class="buynow">
+      <paypal-button
+        client-id="<%= ENV['paypal_client_id'] %>"
+        currency-code="<%= product.price_currency %>"
+        price-cents="<%= product.price_cents %>"
+        product-description="<%= product.name %>"
+        product-id="<%= product.id %>"
+      />
     </div>
   </div>
 </div>

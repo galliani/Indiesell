@@ -14,28 +14,44 @@
 
   <%= csrf_meta_tags %>
 </head>
-<body class="shop <%= "#{controller_name} #{action_name}" %>" id="shop_app">
-  <nav class="shop">
-    <div class="level">
-      <div class="level-left">
-        <div class="level-item">
-          <p class="is-size-5">
-            <%= link_to "Shop", root_path %>
-          </p> 
-        </div>
-      </div>
-      <div class="level-right">
-        <div class="level-item"></div>
-      </div>
+<body>
+  <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+    <a class="navbar-brand" href="#">Navbar</a>
+
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <!-- Turn this as you see fit  -->
+          <!-- <a class="nav-link" href="#">Link</a> -->
+        </li>
+      </ul>
+      <!-- Turn this on later  -->
+      <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Subscribe</button> -->
     </div>
   </nav>
 
-  <%= yield %>
+  <div class="container" id="store-content">
+    <%= yield %>
+  </div>
 
-  <footer>
-    Copyright &copy; <%= Time.current.year %> <%= ENV['shop_name'] %>
+  <footer class="footer">
+    <div class="container">
+      <nav class="pull-left">
+        <ul>
+          <li>
+            <%= link_to 'Store', root_path %>
+          </li>
+          <li>
+            <%= link_to 'About', '/about' %>
+          </li>
+        </ul>
+      </nav>
+      <div class="social-area float-right">
+        <div class="copyright">
+            &copy; 2020 <a href="https://rubyist.net">Galih Muhammad</a>, made with love
+        </div>
+      </div>
+    </div>
   </footer>
 </body>
-
-
 </html>

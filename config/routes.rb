@@ -38,6 +38,9 @@ Rails.application.routes.draw do
     end
   end
 
+  # STATIC PAGES
+  get '/about', to: 'store/pages#about'
+
   root to: 'store/products#index'
 
   # Exceptions routing

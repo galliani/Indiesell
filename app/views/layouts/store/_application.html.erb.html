@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% if @product
+   %><title><%= @product.name %> - <%= ENV['shop_name'] %></title>
+  <% else
+   %><title><%= ENV['shop_name'] %></title>
+  <% end %>
+
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+  <%= stylesheet_link_tag     'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_pack_tag     'store' %>
+
+  <%= csrf_meta_tags %>
+</head>
+<body class="shop <%= "#{controller_name} #{action_name}" %>" id="shop_app">
+  <nav class="shop">
+    <div class="level">
+      <div class="level-left">
+        <div class="level-item">
+          <p class="is-size-5">
+            <%= link_to "Shop", root_path %>
+          </p> 
+        </div>
+      </div>
+      <div class="level-right">
+        <div class="level-item"></div>
+      </div>
+    </div>
+  </nav>
+
+  <%= yield %>
+
+  <footer>
+    Copyright &copy; <%= Time.current.year %> <%= ENV['shop_name'] %>
+  </footer>
+</body>
+
+
+</html>
+
+
+  <body class="landing-page landing-page1">
+      <div class="wrapper">
+          <div class="section section-demo">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-md-6">
+
+                      </div>
+                      <div class="col-md-5 col-md-offset-1">
+                          <h4 class="header-text">Easy to integrate</h4>
+                          <p>
+                              With all the apps that users love! Make it easy for users to share, like, post and tweet their favourite things from the app. Be sure to let users know they continue to remain connected while using your app!
+                          </p>
+                          <a href="http://www.creative-tim.com/product/awesome-landing-page" id="Demo3" class="btn btn-fill btn-info" data-button="info">Get Free Demo</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <footer class="footer">
+              <div class="container">
+                  <nav class="pull-left">
+                      <ul>
+                          <li>
+                              <a href="#">
+                              Home
+                              </a>
+                          </li>
+                          <li>
+                              <a href="#">
+                              Company
+                              </a>
+                          </li>
+                          <li>
+                              <a href="#">
+                              Portfolio
+                              </a>
+                          </li>
+                          <li>
+                              <a href="#">
+                              Blog
+                              </a>
+                          </li>
+                      </ul>
+                  </nav>
+                  <div class="social-area pull-right">
+                      <a class="btn btn-social btn-facebook btn-simple">
+                      <i class="fa fa-facebook-square"></i>
+                      </a>
+                      <a class="btn btn-social btn-twitter btn-simple">
+                      <i class="fa fa-twitter"></i>
+                      </a>
+                      <a class="btn btn-social btn-pinterest btn-simple">
+                      <i class="fa fa-pinterest"></i>
+                      </a>
+                  </div>
+                  <div class="copyright">
+                      &copy; 2016 <a href="http://www.creative-tim.com">Creative Tim</a>, made with love
+                  </div>
+              </div>
+          </footer>
+      </div>
+
+  </body>
