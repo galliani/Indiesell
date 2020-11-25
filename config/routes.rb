@@ -17,11 +17,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       namespace :store do
-        resources :purchases, only: [:create] do
-          collection do
-            post :capture
-          end
-        end
+        resources :paypal_purchases, only: [:create]
       end
     end
   end

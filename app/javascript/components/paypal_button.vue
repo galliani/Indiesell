@@ -3,7 +3,12 @@
 </template>
 
 <script>
+// MIXINS
+// For grabbing the CSRF token to be used to submit to internal API endpoint
+import CsrfHelper from '../mixins/csrf_helper.js';
+
 export default {
+  mixins:[CsrfHelper],
   props: {
     currencyCode: {
       type: String,
@@ -66,9 +71,12 @@ export default {
             const order = await actions.order.capture();
             // for complete reference of order object: https://developer.paypal.com/docs/api/orders/v2
 
-            const response = await fetch('/api/v1/store/purchases/capture', {
+            const response = await fetch('/api/v1/store/paypal_purchases', {
               method:   'POST',
-              headers:  { 'Content-Type': 'application/json' },
+              headers:  {
+                "Content-Type": "application/json",
+                "X-CSRF-Token": this.findCsrfToken() // taken from the packs/store.js
+              },
               body:     JSON.stringify(
                 {
                   price_cents:    this.priceStr,

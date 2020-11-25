@@ -3,10 +3,8 @@
 module API
   module V1
     module Store
-      class PurchasesController < ApplicationController
-        skip_before_action :verify_authenticity_token
-
-        def capture
+      class PaypalPurchasesController < ApplicationController
+        def create
           purchase                      = Purchase.new
           purchase.gateway_id           = 1
           purchase.gateway_customer_id  = params[:customer_id]
