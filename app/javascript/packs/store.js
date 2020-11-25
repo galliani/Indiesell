@@ -8,7 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
     components: {
       PaypalButton
     },
+    props: {
+    },
     data: {
-    }
+    },
+    mounted: function() {
+    },
+    methods: {
+    }    
   })
 })

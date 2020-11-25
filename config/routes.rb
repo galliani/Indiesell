@@ -23,7 +23,8 @@ Rails.application.routes.draw do
   end
 
   namespace :store do
-    resources :products, only: [:index, :show]
+    resources :links, only: :show
+    resources :products,  only: [:index, :show]
     resources :purchases, only: [:show] do
       collection do
         get :failure
@@ -41,6 +42,6 @@ Rails.application.routes.draw do
 
   # Exceptions routing
   get '/404', to: 'errors#not_found'
-  get '422',  to: 'errors#unacceptable'
+  get '/422', to: 'errors#unacceptable'
   get '/500', to: 'errors#internal_error'
 end

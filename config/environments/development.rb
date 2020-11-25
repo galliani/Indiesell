@@ -31,10 +31,12 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
+  # --- MAILER --- #
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
-
-  config.action_mailer.perform_caching = false
+  config.action_mailer.raise_delivery_errors  = false
+  config.action_mailer.perform_caching        = false
+  config.action_mailer.default_url_options    = { host: "http://#{ENV['store_host']}", port: ENV['store_port'] }
+  # Rails.application.routes.default_url_options[:host] = 'lvh.me'
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

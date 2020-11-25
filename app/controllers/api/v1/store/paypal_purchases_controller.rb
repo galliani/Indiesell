@@ -22,6 +22,8 @@ module API
           purchase.price_cents          = parsed_money.fractional # 2000
           purchase.price_currency       = parsed_money.currency.iso_code # USD
 
+          purchase.build_consumable_links
+
           if purchase.save
             render status: :ok, json: { purchase_code: purchase.id }
           else

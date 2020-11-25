@@ -18,17 +18,26 @@ require 'rspec/rails'
 #   ]
 # )
 # Capybara drivers setup
+TEST_DOWNLOAD_PATH = Rails.root.join('tmp/downloads').to_s
 Capybara.register_driver :chrome do |app|
-  Capybara::Selenium::Driver.new(app, browser: :chrome)
+  profile = Selenium::WebDriver::Chrome::Profile.new
+  profile["download.default_directory"] = TEST_DOWNLOAD_PATH
+
+  Capybara::Selenium::Driver.new(app, browser: :chrome, profile: profile)
 end
 Capybara.register_driver :headless_chrome do |app|
   browser_options = ::Selenium::WebDriver::Chrome::Options.new.tap do |opts|
     opts.args << '--headless'
   end
+
+  profile = Selenium::WebDriver::Chrome::Profile.new
+  profile["download.default_directory"] = TEST_DOWNLOAD_PATH
+
   Capybara::Selenium::Driver.new(
     app,
     browser: :chrome,
     options: browser_options,
+    profile: profile,
     http_client: Selenium::WebDriver::Remote::Http::Default.new
   )
 end
@@ -60,6 +69,10 @@ end
 RSpec.configure do |config|
   config.include ActiveJob::TestHelper
   config.include FactoryBot::Syntax::Methods
+  FactoryBot::SyntaxRunner.class_eval do
+    include ActionDispatch::TestProcess
+  end
+  config.include Rails.application.routes.url_helpers, type: :system
 
   config.use_transactional_fixtures = true
 
@@ -95,4 +108,12 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  # shoulda-matchers
+  Shoulda::Matchers.configure do |matcher_config|
+    matcher_config.integrate do |with|
+      with.test_framework :rspec
+      with.library :rails
+    end
+  end
 end

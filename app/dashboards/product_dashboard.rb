@@ -19,6 +19,7 @@ class ProductDashboard < Administrate::BaseDashboard
     updated_at: Field::DateTime,
 
     # Attachments
+    consumables:      Field::ActiveStorage,
     display_picture:  Field::ActiveStorage,
     images:           Field::ActiveStorage,
   }.freeze
@@ -49,6 +50,7 @@ class ProductDashboard < Administrate::BaseDashboard
   updated_at
   display_picture
   images
+  consumables
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -63,6 +65,7 @@ class ProductDashboard < Administrate::BaseDashboard
   serial_number
   display_picture
   images
+  consumables
   ].freeze
 
   # COLLECTION_FILTERS
@@ -87,6 +90,8 @@ class ProductDashboard < Administrate::BaseDashboard
 
   # WORKAROUND for administrate-field-active_storage gem
   def permitted_attributes
-    super + [:images => []]
+    super + [
+      consumables: [], images: []
+  ]
   end
 end

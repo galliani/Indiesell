@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" id="product-<%= product.id %>">
   <div class="col-md-6">
     <figure class="product-display-picture">
       <a href="<%= root_path %>">
@@ -30,6 +30,7 @@
     <hr>
     <div class="buynow">
       <paypal-button
+        refer="paypal-container-<%= product.id.to_s %>"
         client-id="<%= ENV['paypal_client_id'] %>"
         currency-code="<%= product.price_currency %>"
         price-str="<%= product.price.to_s %>"

@@ -1,5 +1,5 @@
 <template>
-  <div ref="paypal"></div>
+  <div :id="refer"></div>
 </template>
 
 <script>
@@ -35,6 +35,10 @@ export default {
     productId: {
       type: String,
       required: true
+    },
+    refer: {
+      type: String,
+      required: true
     }
   },
   data() {
@@ -43,24 +47,26 @@ export default {
         description: "",
         amount: {
           currency_code: "USD",
-          value: 0
+          value: 100
         }
       }
     };
   },
   mounted: function() {
-    const script = document.createElement("script");
-    script.src = `https://www.paypal.com/sdk/js?client-id=${this.clientId}`;
-    script.addEventListener("load", this.setLoaded);
-    document.body.appendChild(script);
-
     this.order.description          = this.productDescription;
     this.order.amount.currency_code = this.currencyCode;
     this.order.amount.value         = Number(this.priceStr);
+
+    this.setLoaded();
+  },
+  computed: {
+    selectorContainer() {
+      return '#' + this.refer;
+    }
   },
   methods: {
     setLoaded: function() {
-      window.paypal
+      paypal
         .Buttons({
           createOrder: (data, actions) => {
             return actions.order.create({
@@ -100,8 +106,7 @@ export default {
           onError: err => {
             console.log(err);
           }
-        })
-        .render(this.$refs.paypal);
+        }).render(this.selectorContainer);
     }
   }
 };
