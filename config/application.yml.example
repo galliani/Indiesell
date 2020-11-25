@@ -3,6 +3,16 @@ paypal_mock_cc_no:  'CARD_NO'
 paypal_mock_cc_exp: '00/00'
 paypal_mock_cc_cvv: '123'
 
+store_name:  'Indiesell'
+store_owner_name: 'Your Name'
+store_owner_email: 'your.name@mail.com' 
+store_owner_twitter: 'yourname'
+store_host: 'localhost:3000'
+
+#file management - all required
+file_expiry_hours: '24'
+file_max_downloads: '10'
+
 development:
   paypal_client_id: PAYPAL_CLIENT_ID
   paypal_client_sec: PAYPAL_CLIENT_SEC

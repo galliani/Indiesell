@@ -1,0 +1,55 @@
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <h4 class="text-muted" id="purchased-serial-number">
+    Your Purchase #<%= @purchase.to_param %>
+  </h4>
+  <h1 class="display-4" id="purchased-product-name">
+    <%= @purchase.product.name %>
+  </h1>
+  <p class="lead" id="purchased-product-intro">
+    <%= @purchase.product.intro %>
+  </p>
+</div>
+
+<br>
+<br>
+<br>
+
+<div class="container">
+  <div class="card-deck mb-3 text-center">
+
+    <% @purchase.links.each_with_index do |purchased_link, index| %>
+      <div class="card mb-4 shadow-sm consumable-link" id="consumable-link-<%= index %>">
+        <div class="card-header">
+          <h4 class="my-0 font-weight-normal">
+            <small><%= purchased_link.content_type %></small>
+          </h4>
+        </div>
+        <div class="card-body">
+          <h1 class="card-title pricing-card-title">
+            <%= purchased_link.filename %>
+          </h1>
+          <ul class="list-unstyled mt-3 mb-4">
+            <li>
+              <small class="text-muted">Size: </small>
+              <%= purchased_link.download_size %>
+            </li>
+            <li>
+              <small class="text-muted">Expire at: </small>
+              <%= purchased_link.expiry %>
+            </li>
+            <li>
+              <small class="text-muted"># of downloads: </small>
+              <%= purchased_link.download_count %>
+            </li>
+          </ul>
+
+          <%=
+            link_to 'Download',
+                    store_link_path(purchased_link.to_param),
+                    class: "download-button btn btn-lg btn-block btn-primary"
+          %>
+        </div>
+      <% end %>
+
+    </div>
+  </div>

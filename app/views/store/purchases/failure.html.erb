@@ -23,9 +23,20 @@
 
       <h2>Sorry, your payment for the #<%= params[:purchase_code] %> has failed</h2>
 
-      <p>Please go back and try again. If problem persists, please copy the purchase code above and contact the admin.</p>
+      <p>Do not worry, your fund was not deducted</p>
 
-      <a href="#">Go To Homepage</a>
+      <% if ENV['store_owner_email'].present? %>
+        <p>Please, please <a href="mailto:galih.rubyist@gmail.com?subject=Payment failed #<%= params[:purchase_code] %>">contact Us</a>.
+        </p>
+      <% end %>
+      <br>
+
+      <% if ENV['store_owner_twitter'].present? %>
+        <p>Or you can contact the admin via twitter @<%= ENV['store_owner_twitter'] %></p>
+      <% end %>
+
+      <hr>
+      <%= link_to '...or Go back to Homepage', root_path %>
     </div>
   </div>
 </body>

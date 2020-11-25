@@ -1,9 +1,14 @@
 <template>
-  <div ref="paypal"></div>
+  <div :id="refer"></div>
 </template>
 
 <script>
+// MIXINS
+// For grabbing the CSRF token to be used to submit to internal API endpoint
+import CsrfHelper from '../mixins/csrf_helper.js';
+
 export default {
+  mixins:[CsrfHelper],
   props: {
     currencyCode: {
       type: String,
@@ -19,8 +24,8 @@ export default {
         return ''
       }
     },
-    priceCents: {
-      type: String,
+    priceStr: {
+      type: String, // should be like "100.00"
       required: true
     },
     productDescription: {
@@ -28,6 +33,10 @@ export default {
       required: true
     },
     productId: {
+      type: String,
+      required: true
+    },
+    refer: {
       type: String,
       required: true
     }
@@ -38,24 +47,26 @@ export default {
         description: "",
         amount: {
           currency_code: "USD",
-          value: 0
+          value: 100
         }
       }
     };
   },
   mounted: function() {
-    const script = document.createElement("script");
-    script.src = `https://www.paypal.com/sdk/js?client-id=${this.clientId}`;
-    script.addEventListener("load", this.setLoaded);
-    document.body.appendChild(script);
-
     this.order.description          = this.productDescription;
     this.order.amount.currency_code = this.currencyCode;
-    this.order.amount.value         = Number(this.priceCents);
+    this.order.amount.value         = Number(this.priceStr);
+
+    this.setLoaded();
+  },
+  computed: {
+    selectorContainer() {
+      return '#' + this.refer;
+    }
   },
   methods: {
     setLoaded: function() {
-      window.paypal
+      paypal
         .Buttons({
           createOrder: (data, actions) => {
             return actions.order.create({
@@ -66,12 +77,15 @@ export default {
             const order = await actions.order.capture();
             // for complete reference of order object: https://developer.paypal.com/docs/api/orders/v2
 
-            const response = await fetch('/api/v1/store/purchases/capture', {
+            const response = await fetch('/api/v1/store/paypal_purchases', {
               method:   'POST',
-              headers:  { 'Content-Type': 'application/json' },
+              headers:  {
+                "Content-Type": "application/json",
+                "X-CSRF-Token": this.findCsrfToken() // taken from the packs/store.js
+              },
               body:     JSON.stringify(
                 {
-                  price_cents:    this.priceCents,
+                  price_cents:    this.priceStr,
                   price_currency: this.currencyCode,
                   product_id:     this.productId,
                   token:          order.orderID,
@@ -92,8 +106,7 @@ export default {
           onError: err => {
             console.log(err);
           }
-        })
-        .render(this.$refs.paypal);
+        }).render(this.selectorContainer);
     }
   }
 };

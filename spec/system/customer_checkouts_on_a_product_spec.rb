@@ -64,6 +64,11 @@ RSpec.describe 'Customer checkouts on a product', type: :system, js: true do # 2
       # describe 'payment success page'
       expect(subject).to have_selector   '#payment-success-message'
       expect(subject).to have_content    "#{product.price.currency.symbol}#{product.price.to_i}"
+
+      # Sanity check
+      new_purchase = Purchase.last
+      expect(new_purchase.price_cents).to eq product.price_cents
+      expect(new_purchase.price).to eq product.price
     end
   end
 

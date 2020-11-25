@@ -17,18 +17,15 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       namespace :store do
-        resources :purchases, only: [:create] do
-          collection do
-            post :capture
-          end
-        end
+        resources :paypal_purchases, only: [:create]
       end
     end
   end
 
   namespace :store do
-    resources :products, only: [:index, :show]
-    resources :purchases, only: [] do
+    resources :links, only: :show
+    resources :products,  only: [:index, :show]
+    resources :purchases, only: [:show] do
       collection do
         get :failure
       end
@@ -38,10 +35,13 @@ Rails.application.routes.draw do
     end
   end
 
+  # STATIC PAGES
+  get '/about', to: 'store/pages#about'
+
   root to: 'store/products#index'
 
   # Exceptions routing
   get '/404', to: 'errors#not_found'
-  get '422',  to: 'errors#unacceptable'
+  get '/422', to: 'errors#unacceptable'
   get '/500', to: 'errors#internal_error'
 end

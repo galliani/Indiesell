@@ -4,7 +4,10 @@ module Store
   class PurchasesController < ApplicationController
     layout 'store/application.html.erb'
 
-    before_action :find_purchase, only: :success
+    before_action :find_purchase, only: [:show, :success]
+
+    def show
+    end
 
     def success
     end

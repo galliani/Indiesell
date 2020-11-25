@@ -30,6 +30,7 @@ gem 'administrate-field-money'
 # gem 'administrate-field-date_picker'
 
 gem 'active_hash'
+gem 'acts_as_hashids'
 gem 'clearance'
 gem 'figaro'
 gem 'money-rails'
