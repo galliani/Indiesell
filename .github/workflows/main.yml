@@ -1,5 +1,6 @@
 env:
   RUBY_VERSION: 2.6
+  NODE_VERSION: 12
 
 name: Rails tests
 on: [push, pull_request]
@@ -12,13 +13,22 @@ jobs:
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          check-latest: true
+      - run: npm install --global yarn
+      - run: npm install
+      - run: npm test
+      - run: yarn
       - name: Install database client
-        run: sudo apt-get install sqlite3
-      - name: Check database client is working
-        run: sqlite3 --version
-      - name: Install dependencies
+        run: |
+          sudo apt-get install sqlite3
+          sqlite3 --version
+      - name: Install gem dependencies
         run: |
           gem install bundler
+          gem install execjs -v '2.7.0'
           bundler install
       - name: Create database
         run: |
