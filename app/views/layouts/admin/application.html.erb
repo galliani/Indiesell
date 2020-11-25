@@ -32,12 +32,23 @@ By default, it renders:
   </head>
   <body>
     <div class="app-container">
-      <%= render "navigation" -%>
+      <% if signed_in? %>
+        <%= render "navigation" -%>
 
-      <main class="main-content" role="main">
-        <%= render "flashes" -%>
-        <%= yield %>
-      </main>
+        <main class="main-content" role="main">
+          <%= render "flashes" -%>
+          <%= yield %>
+        </main>
+      <% else %>
+        <nav class="navigation" role="navigation">
+          <h1 class="font-weight-light">Please sign in first</h1>
+          <br> <hr>
+          <%= yield %>
+        </nav>
+        <main class="main-content" role="main">
+          <%= render "flashes" -%>
+        </main>
+      <% end %>
     </div>
 
     <div style="display: none; width: 0; height: 0; overflow: hidden; position: absolute">
