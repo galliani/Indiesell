@@ -15,20 +15,38 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
-    <%= link_to ENV['store_name'], root_path, class: 'navbar-brand' %>
+  <!--Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
 
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item">
-          <!-- Turn this as you see fit  -->
-          <!-- <a class="nav-link" href="#">Link</a> -->
-        </li>
-      </ul>
-      <!-- Turn this on later  -->
-      <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Subscribe</button> -->
+      <!-- Collapse button -->
+      <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Collapsible content -->
+      <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+
+        <!-- Links -->
+        <ul class="navbar-nav">
+
+          <li class="nav-item">
+            <%= link_to ENV['store_name'], root_path, class: 'navbar-brand' %>
+          </li>
+
+          <li class="nav-item">
+            <!-- <a class="nav-link" href="#"></a> -->
+          </li>
+
+        </ul>
+        <!-- Links -->
+      </div>
+      <!-- CTA -->
     </div>
+
   </nav>
+  <!--/.Navbar-->
 
   <div class="container" id="store-content">
     <%= yield %>
