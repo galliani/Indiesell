@@ -19,10 +19,10 @@ RSpec.describe 'Customer downloads purchased link', type: :system do # 2.79 seco
   end
 
   it 'should not raise any exception' do
-    expect {
+    expect do
       within('#consumable-link-0') do
         click_on 'Download'
       end      
-    }.to_not raise_error
+    end.to_not raise_error
   end
 end

@@ -21,12 +21,12 @@
       <div class="card mb-4 shadow-sm consumable-link" id="consumable-link-<%= index %>">
         <div class="card-header">
           <h4 class="my-0 font-weight-normal">
-            <%= purchased_link.filename %>
+            <small><%= purchased_link.content_type %></small>
           </h4>
         </div>
         <div class="card-body">
           <h1 class="card-title pricing-card-title">
-            <%= purchased_link.content_type %>
+            <%= purchased_link.filename %>
           </h1>
           <ul class="list-unstyled mt-3 mb-4">
             <li>
