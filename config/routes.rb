@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 
   namespace :store do
     resources :products, only: [:index, :show]
-    resources :purchases, only: [] do
+    resources :purchases, only: [:show] do
       collection do
         get :failure
       end

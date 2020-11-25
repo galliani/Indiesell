@@ -19,8 +19,8 @@ export default {
         return ''
       }
     },
-    priceCents: {
-      type: String,
+    priceStr: {
+      type: String, // should be like "100.00"
       required: true
     },
     productDescription: {
@@ -51,7 +51,7 @@ export default {
 
     this.order.description          = this.productDescription;
     this.order.amount.currency_code = this.currencyCode;
-    this.order.amount.value         = Number(this.priceCents);
+    this.order.amount.value         = Number(this.priceStr);
   },
   methods: {
     setLoaded: function() {
@@ -71,7 +71,7 @@ export default {
               headers:  { 'Content-Type': 'application/json' },
               body:     JSON.stringify(
                 {
-                  price_cents:    this.priceCents,
+                  price_cents:    this.priceStr,
                   price_currency: this.currencyCode,
                   product_id:     this.productId,
                   token:          order.orderID,

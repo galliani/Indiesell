@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <% if @product
-   %><title><%= @product.name %> - <%= ENV['shop_name'] %></title>
-  <% else
-   %><title><%= ENV['shop_name'] %></title>
+  <% if @product%>
+    <title><%= @product.name %> - <%= ENV['store_name'] %></title>
+  <% else %>
+    <title><%= ENV['store_name'] %></title>
   <% end %>
 
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -16,7 +16,7 @@
 </head>
 <body>
   <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <%= link_to ENV['store_name'], root_path, class: 'navbar-brand' %>
 
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -48,7 +48,7 @@
       </nav>
       <div class="social-area float-right">
         <div class="copyright">
-            &copy; 2020 <a href="https://rubyist.net">Galih Muhammad</a>, made with love
+            &copy; 2020 <a href="https://rubyist.info">Galih Muhammad</a>, made with love
         </div>
       </div>
     </div>

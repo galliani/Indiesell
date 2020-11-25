@@ -15,16 +15,24 @@
     </h3>
     <p class="intro"><%= product.description %></p>
 
-    <p>
-      <a href="http://www.creative-tim.com/product/awesome-landing-page" id="Demo3" class="btn btn-fill btn-info" data-button="info">View detail</a>      
-    </p>
+    <!-- Turn this on if needed to show link to product detail page-->
+    <!-- 
+
+        <p>
+          <a href="" class="btn btn-fill btn-info" data-button="info">
+            View detail
+          </a>      
+        </p>
+
+     -->
+
     <br>
     <hr>
     <div class="buynow">
       <paypal-button
         client-id="<%= ENV['paypal_client_id'] %>"
         currency-code="<%= product.price_currency %>"
-        price-cents="<%= product.price_cents %>"
+        price-str="<%= product.price.to_s %>"
         product-description="<%= product.name %>"
         product-id="<%= product.id %>"
       />

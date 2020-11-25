@@ -19,7 +19,7 @@ By default, it renders:
     <meta name="robots" content="noodp, noydir, index, follow">
     <meta name="viewport" content="initial-scale=1">
     <title>
-      <%= content_for(:title) || 'Dashboard' %> - <%= Rails.application.class.module_parent_name.titlecase %>
+      <%= content_for(:title) || 'CMS' %> - <%= ENV['store_name'] %>
     </title>
 
     <%= csp_meta_tag %>
