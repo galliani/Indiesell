@@ -4,7 +4,11 @@
 
 A Ready-to-be used and simple to extend and customize online store for selling digital goods and downloadable contents.
 
-(Very) heavily inspired by [Zipsell] made by [Yang Yongfook](https://github.com/yongfook/zipsell), Indiesell is intended to be clean, simple, maintanable, and well-tested. It has opinionated
+![Store front example](./public/screenshot_1.png)
+![Admin layout - product form](./public/screenshot_2.png)
+![Admin layout - products list](./public/screenshot_3.png)
+
+(Very) heavily inspired by [Zipsell, made by Yang Yongfook,](https://github.com/yongfook/zipsell), Indiesell is intended to be clean, simple, maintanable, and well-tested. It has opinionated
 structures but is built with extension and customization in mind.
 
 Please use [GitHub Issues] to report bugs. If you have a question about the
