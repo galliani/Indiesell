@@ -2,7 +2,7 @@ env:
   RUBY_VERSION: 2.6
   NODE_VERSION: 12
 
-name: Rails tests
+name: spec
 on: [push, pull_request]
 jobs:
   rspec-test:
