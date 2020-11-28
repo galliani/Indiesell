@@ -50,8 +50,10 @@ ActiveRecord::Schema.define(version: 2020_11_14_064502) do
     t.boolean "is_paid"
     t.integer "price_cents", limit: 8, default: 0, null: false
     t.string "price_currency", default: "USD", null: false
+    t.string "customer_email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_email"], name: "index_purchases_on_customer_email"
     t.index ["serial_number"], name: "index_purchases_on_serial_number"
     t.index ["token"], name: "index_purchases_on_token"
   end

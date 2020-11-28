@@ -14,7 +14,7 @@ RSpec.describe 'Customer checkouts on a product', type: :system, js: true do # 2
   before do
     visit root_path
 
-    page.should have_selector('#paypal-button-container')
+    page.should have_selector('.paypal-buttons-context-iframe')
     page.should have_selector 'iframe'
 
     parent_iframe = find(paypal_smart_button_iframe)
@@ -63,7 +63,6 @@ RSpec.describe 'Customer checkouts on a product', type: :system, js: true do # 2
       # Should be redirected to the /success payment page
       # describe 'payment success page'
       expect(subject).to have_selector   '#payment-success-message'
-      expect(subject).to have_content    '10.00'
     end
   end
 

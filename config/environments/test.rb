@@ -46,8 +46,4 @@ Rails.application.configure do
 
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
-
-  # CLEARANCE gem middleware to stub login
-  # https://github.com/thoughtbot/clearance#testing
-  config.middleware.use Clearance::BackDoor
 end

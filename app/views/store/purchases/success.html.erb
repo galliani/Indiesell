@@ -1,12 +1,15 @@
 <div class="jumbotron text-center" id="payment-success-message">
   <h1 class="display-3">Payment is Successful</h1>
-  <p><%= @order.purchase_units.first.amount.value %> <%= @order.purchase_units.first.amount.currency_code %></p>
-  <p class="lead"><strong>Thank you! Please check your email</strong> for further instructions on how to access your purchase.</p>
-  <hr>
-  <p>
-    Having trouble? Please <a href=""> contact us</a>
-  </p>
+  <p><%= money_without_cents_and_with_symbol @purchase.price %></p>
   <p class="lead">
-    <a class="btn btn-primary btn-sm" href="https://bootstrapcreative.com/" role="button">Continue to homepage</a>
+    <strong>Thank you! Please click the button below </strong> for further instructions on how to access your purchase.
+  </p>
+  <hr>
+  <p class="lead">
+    <%=
+      link_to 'Continue to your purchase page',
+              '#',
+              class: "btn btn-primary btn-lg"
+    %>
   </p>
 </div>

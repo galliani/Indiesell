@@ -10,6 +10,7 @@ Rails.application.routes.draw do
         delete :images,           action: :remove_image
       end
     end
+    resources :purchases, only: [:index, :show]
 
     root to: 'pages#dashboard'
   end
@@ -17,10 +18,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       namespace :store do
-        resources :purchases, only: [:create] do
-          collection do
-            post :capture
-          end
+        resources :paypal_purchases, only: [:create] do
         end
       end
     end
