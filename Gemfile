@@ -31,6 +31,7 @@ gem 'administrate-field-money'
 
 gem 'active_hash'
 gem 'acts_as_hashids'
+gem 'azure-storage'
 gem 'clearance'
 gem 'figaro'
 gem 'money-rails'

@@ -13,6 +13,11 @@ store_host: 'localhost:3000'
 file_expiry_hours: '24'
 file_max_downloads: '10'
 
+# all required
+azure_storage_account_name: ""
+azure_storage_access_key: ""
+azure_container: ""
+
 development:
   paypal_client_id: PAYPAL_CLIENT_ID
   paypal_client_sec: PAYPAL_CLIENT_SEC
