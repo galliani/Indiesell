@@ -247,6 +247,7 @@ GEM
     paypal-checkout-sdk (1.0.3)
       paypalhttp (~> 1.0.0)
     paypalhttp (1.0.0)
+    pg (1.2.3)
     polyamorous (2.3.2)
       activerecord (>= 5.2.1)
     popper_js (1.16.0)
@@ -453,6 +454,7 @@ DEPENDENCIES
   mini_magick
   money-rails
   paypal-checkout-sdk
+  pg
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.4)
   ransack
@@ -468,7 +470,7 @@ DEPENDENCIES
   simplecov (= 0.16.1)
   spring
   spring-watcher-listen (~> 2.0.0)
-  sqlite3 (~> 1.4)
+  sqlite3
   sucker_punch
   timecop
   turbolinks (~> 5)
