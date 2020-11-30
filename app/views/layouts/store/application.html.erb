@@ -78,22 +78,6 @@
     data-sdk-integration-source="button-factory"
   >
   </script>
-  <script>
-    paypal.Buttons({
-      env: 'sandbox', // Valid values are sandbox and live.
-      createOrder: function(data, actions) {
-        // This function sets up the details of the transaction, including the amount and line item details.
-        return actions.order.create({
-          purchase_units: [{
-            amount: {
-              value: '0.01'
-            }
-          }]
-        });
-      },
-      onApprove: async (data) => {}
-    }).render('#paypal-button-container');
-  </script> 
 </body>
 
 </html>

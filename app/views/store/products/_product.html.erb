@@ -30,7 +30,10 @@
     <hr>
 
     <!-- TODO: Put the paypal button here -->
-    <div id="paypal-button-container"></div>
-
+    <div class="buynow">
+      <paypal-button
+        refer="paypal-container-<%= product.id.to_s %>"
+      />
+    </div>
   </div>
 </div>
