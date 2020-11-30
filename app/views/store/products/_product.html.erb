@@ -33,6 +33,10 @@
     <div class="buynow">
       <paypal-button
         refer="paypal-container-<%= product.id.to_s %>"
+        currency-code="<%= product.price_currency %>"
+        price-str="<%= product.price.to_s %>"
+        product-description="<%= product.name %>"
+        product-id="<%= product.id %>"        
       />
     </div>
   </div>

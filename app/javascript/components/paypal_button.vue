@@ -10,6 +10,25 @@ export default {
       required: true
     },
     // Pass the product attributes to be used here
+    currencyCode: {
+      type: String,
+      required: false,
+      default() {
+        return 'USD'
+      }
+    },
+    priceStr: {
+      type: String, // should be like "100.00"
+      required: true
+    },
+    productDescription: {
+      type: String,
+      required: true
+    },
+    productId: {
+      type: String,
+      required: true
+    }
   },
   data() {
     return {
