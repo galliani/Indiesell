@@ -45,18 +45,23 @@ ActiveRecord::Schema.define(version: 2020_11_14_064502) do
   end
 
   create_table "purchases", force: :cascade do |t|
+    t.integer "product_id"
     t.string "serial_number"
-    t.string "token"
-    t.boolean "is_paid"
+    t.boolean "is_paid", default: false
     t.integer "price_cents", limit: 8, default: 0, null: false
     t.string "price_currency", default: "USD", null: false
+    t.string "token"
+    t.integer "gateway_id"
+    t.string "gateway_customer_id"
     t.string "customer_email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["customer_email"], name: "index_purchases_on_customer_email"
+    t.index ["gateway_customer_id"], name: "index_purchases_on_gateway_customer_id"
+    t.index ["product_id"], name: "index_purchases_on_product_id"
     t.index ["serial_number"], name: "index_purchases_on_serial_number"
     t.index ["token"], name: "index_purchases_on_token"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "purchases", "products"
 end
