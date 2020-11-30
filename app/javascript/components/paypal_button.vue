@@ -43,6 +43,11 @@ export default {
     };
   },
   mounted: function() {
+    // These 3 lines are what we add here
+    this.order.description          = this.productDescription;
+    this.order.amount.currency_code = this.currencyCode;
+    this.order.amount.value         = Number(this.priceStr);
+
     // IMPORTANT: to cause the paypal button be loeaded and rendered
     this.setLoaded();
   },
