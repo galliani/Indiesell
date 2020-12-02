@@ -22,9 +22,4 @@ test:
 
 production:
   adapter: postgresql
-  encoding: unicode
-  database: <%= ENV['pg_database_name'] %>
-  username: <%= ENV['pg_database_username'] %>
-  password: <%= ENV['pg_database_password'] %>
-  host: <%= ENV['pg_database_host'] %>
-  port: <%= ENV['pg_database_port'] %>
+  url: <%= ENV['DATABASE_URL'] %>
