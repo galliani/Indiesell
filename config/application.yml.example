@@ -3,6 +3,7 @@ paypal_mock_cc_no:  'CARD_NO'
 paypal_mock_cc_exp: '00/00'
 paypal_mock_cc_cvv: '123'
 
+default_currency: 'USD'
 store_name:  'Indiesell'
 store_owner_name: 'Your Name'
 store_owner_email: 'your.name@mail.com' 

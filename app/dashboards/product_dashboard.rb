@@ -12,7 +12,9 @@ class ProductDashboard < Administrate::BaseDashboard
     name: Field::String,
     description: Field::Text,
     price_cents: Field::Number,
-    price_currency: Field::String,
+    price_currency: Field::Select.with_options(
+      collection: ISO_CURRENCIES_LIST.keys.map(&:upcase)
+    ),
     is_live: Field::Boolean,
     serial_number: Field::String,
     created_at: Field::DateTime,

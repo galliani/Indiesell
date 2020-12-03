@@ -1,5 +1,5 @@
 <div class="row" id="product-<%= product.id %>">
-  <div class="col-md-6">
+  <div class="col-md-5">
     <figure class="product-display-picture">
       <a href="<%= root_path %>">
         <% if product.display_picture.present? %>
@@ -8,7 +8,7 @@
       </a>
     </figure>
   </div>
-  <div class="col-md-5 col-md-offset-1">
+  <div class="col-md-7">
     <h2 class="product-name"><a href="<%= root_path %>"><%= product.name %></a></h2>
     <h3 class="product-price header-text">
       <%= money_without_cents_and_with_symbol product.price %>

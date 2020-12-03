@@ -1,0 +1,1 @@
+ISO_CURRENCIES_LIST = JSON.parse(File.read 'config/currency_iso.json')
