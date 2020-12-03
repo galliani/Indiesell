@@ -4,9 +4,7 @@
 
 A Ready-to-be used and simple to extend and customize online store for selling digital goods and downloadable contents.
 
-![Store front example](./public/screenshot_1.png)
-![Admin layout - product form](./public/screenshot_2.png)
-![Admin layout - products list](./public/screenshot_3.png)
+![Store front example](./public/store_front_demo.png)
 
 (Very) heavily inspired by [Zipsell, made by Yang Yongfook,](https://github.com/yongfook/zipsell), Indiesell is intended to be clean, simple, maintanable, and well-tested. It has opinionated
 structures but is built with extension and customization in mind.
@@ -28,26 +26,27 @@ Indiesell is a Rails app tested against Rails `>= 6.0` and Ruby `>= 2.6`, so mak
 4. ```bundler exec rails db:migrate```
 5. Copy the application.yml.example to application.yml. Then override the application.yml that you have just copied, primarily for these keys:
 ```yaml
+default_currency: 'USD'
 store_name:  ''
 store_owner_name: ''
 store_owner_email: '' 
 store_owner_twitter: ''
-store_host: ''
+store_host: 'domain-name.com'
 
 file_expiry_hours: '24'
 file_max_downloads: '10'
 
 development:
   paypal_client_id: your_sandbox_paypal_client_id
-  paypal_client_sec: your_sandbox_paypal_client_sec
 
 test:
   paypal_client_id: your_sandbox_paypal_client_id
-  paypal_client_sec: your_sandbox_paypal_client_sec
 
 production:
   paypal_client_id: your_real_paypal_client_id
-  paypal_client_sec: your_real_paypal_client_sec
+  azure_storage_account_name: ""
+  azure_storage_access_KEY: ""
+  azure_container: ""
 ```
 
 6. Run ```rake db:seed``` to generate the admin user, based on the application.yml
@@ -56,19 +55,28 @@ production:
 
 ## Use
 
+You can test the demo by logging in the [Demo app Login page](https://indiesell-demo.herokuapp.com/admin) with:
+
+email: 'indiesell.demo@gmail.com'
+password: 'password'
+
+
 ### Creating product
 
-TBD
+![Form example](./public/add_new_product.png)
+![Result example](./public/created_product_demo.png)
 
-### Hiding product
+## Testing Payment
 
-TBD
+Just click one of the buttons provided by Paypal, don't worry you will not be actually charged ^_^.
 
+If you really want to be safe, you can just use this mock CC created in Paypal Developer dashboard:
 
-## Testing
-
-TBD
-
+```
+card_number:    "4032033477038355"
+card_exp_date:  "07/23"
+card_cvv:       "152"
+```
 
 ## Contributing
 
