@@ -2,7 +2,7 @@
 
 [![Build Status](https://github.com/galliani/indiesell/workflows/spec/badge.svg)
 
-A Ready-to-be used and simple to extend and customize online store for selling digital goods and downloadable contents.
+A Ready-to-be used and simple to extend and customize online store for selling digital goods and downloadable contents. You can visit [the demo site here](https://indiesell-demo.herokuapp.com) with:
 
 ![Store front example](./public/store_front_demo.png)
 
@@ -55,7 +55,7 @@ production:
 
 ## Use
 
-You can test the demo by logging in the [Demo app Login page](https://indiesell-demo.herokuapp.com/admin) with:
+You can test the demo by logging in to the [Admin login page](https://indiesell-demo.herokuapp.com/admin) with:
 
 email: 'indiesell.demo@gmail.com'
 password: 'password'
