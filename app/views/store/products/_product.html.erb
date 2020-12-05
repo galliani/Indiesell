@@ -30,7 +30,23 @@
     <hr>
     <div class="buynow">
       <vue-paypal-smart-payment-buttons
+        @paypal-order-created="processing"
+        @paypal-order-approved="finishing"
+        @paypal-order-failed="failing"
         button-unique-reference="paypal-container-<%= product.id.to_s %>"
+        v-bind:cart="{
+          intent: 'CAPTURE',
+          items: [
+            {
+              reference_id: '<%= product.id %>',
+              description: '<%= product.name %>',
+              amount: {
+                currency_code: '<%= product.price_currency %>',
+                value: <%= product.price.to_s %>
+              }
+            }
+          ]
+        }"
       />
     </div>
   </div>

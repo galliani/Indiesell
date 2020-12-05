@@ -7509,10 +7509,10 @@ vue-loader@^15.7.1:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
-vue-paypal-smart-payment-buttons@^0.0.1-alpha:
-  version "0.0.1-alpha"
-  resolved "https://registry.yarnpkg.com/vue-paypal-smart-payment-buttons/-/vue-paypal-smart-payment-buttons-0.0.1-alpha.tgz#7737333276b8ca72b13f4e41ddcfdf7fe248e391"
-  integrity sha512-CsnOfsecSM9DgP2IA98BzpNXYvoOiW1Phs5W6PjNLRslkTiHu6FrVPinSjQY77NLT9a/zkON7SOjeN7ulFe1vg==
+vue-paypal-smart-payment-buttons@^0.0.2-alpha:
+  version "0.0.2-alpha"
+  resolved "https://registry.yarnpkg.com/vue-paypal-smart-payment-buttons/-/vue-paypal-smart-payment-buttons-0.0.2-alpha.tgz#ae81e655d4ed7af92554c7e870784e64659f2212"
+  integrity sha512-Be5fhl3Xi/1q8dy+Pbel9rPGIE+KZ+GekKTBawSE4xEfJ0w9Ivs5xxdQAtSv9HOqXlHSKgS3xJHgwck6EgXoJw==
   dependencies:
     "@paypal/sdk-client" "^4.0.141"
     vue "^2.3.3"
