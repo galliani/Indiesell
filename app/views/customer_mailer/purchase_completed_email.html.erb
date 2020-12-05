@@ -10,7 +10,7 @@
       Purchase details<br>
       --------------------------
     </p>
-    <p>Product: <%= @purchase.product.name %></p>
+    <p>Product: <%= @purchase.product_name %></p>
     <p>Amount:  <%= @purchase.price.to_s %></p>
     <p>Paid At: <%= @purchase.created_at.strftime('%e %b %Y %H:%M:%S%p') %></p>
     <p>
