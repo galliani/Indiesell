@@ -2,10 +2,6 @@ import Vue from 'vue/dist/vue.esm'
 import { unpackSDKMeta } from '@paypal/sdk-client';
 import vuePaypalSmartPaymentButtons from "vue-paypal-smart-payment-buttons";
 
-// MIXINS
-// For grabbing the CSRF token to be used to submit to internal API endpoint
-// import CsrfHelper from '../mixins/csrf_helper.js';
-
 document.addEventListener('DOMContentLoaded', () => {
   var storeList = new Vue({
     el: '#store-list',
