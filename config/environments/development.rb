@@ -36,7 +36,6 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors  = false
   config.action_mailer.perform_caching        = false
   config.action_mailer.default_url_options    = { host: "http://#{ENV['store_host']}", port: ENV['store_port'] }
-  # Rails.application.routes.default_url_options[:host] = 'lvh.me'
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
