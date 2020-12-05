@@ -29,13 +29,8 @@
     <br>
     <hr>
     <div class="buynow">
-      <paypal-button
-        refer="paypal-container-<%= product.id.to_s %>"
-        client-id="<%= ENV['paypal_client_id'] %>"
-        currency-code="<%= product.price_currency %>"
-        price-str="<%= product.price.to_s %>"
-        product-description="<%= product.name %>"
-        product-id="<%= product.id %>"
+      <vue-paypal-smart-payment-buttons
+        button-unique-reference="paypal-container-<%= product.id.to_s %>"
       />
     </div>
   </div>
