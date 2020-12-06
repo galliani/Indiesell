@@ -36,6 +36,22 @@ jobs:
           bundler exec rails db:migrate RAILS_ENV=test
       - name: Run tests
         run: bundler exec rspec  
+        env:
+          store_name:  ${{ secrets.STORE_NAME }}
+          store_owner_name: ${{ secrets.STORE_OWNER_NAME }}
+          store_owner_email: ${{ secrets.STORE_OWNER_EMAIL }}
+          store_owner_twitter: ${{ secrets.STORE_OWNER_TWITTER }}
+          default_currency: ${{ secrets.DEFAULT_CURRENCY }}
+          file_expiry_hours: ${{ secrets.FILE_EXPIRY_HOURS }}
+          file_max_downloads: ${{ secrets.FILE_MAX_DOWNLOADS }}
+          paypal_client_id: ${{ secrets.PAYPAL_CLIENT_ID }}
+          store_host: ${{ secrets.STORE_HOST }}
+          store_port: ${{ secrets.STORE_PORT }}
+          paypal_mock_cc_no: ${{ secrets.PAYPAL_MOCK_CC_NO }}
+          paypal_mock_cc_exp: ${{ secrets.PAYPAL_MOCK_CC_EXP }}
+          paypal_mock_cc_cvv: ${{ secrets.PAYPAL_MOCK_CC_CVV }}
+
+
       - name: Upload coverage results    
         uses: actions/upload-artifact@master
         if: always()
