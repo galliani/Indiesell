@@ -24,7 +24,8 @@ jobs:
           sudo apt-get clean
           sudo apt-get install -y wget
           wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add
-          echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list
+          sudo touch /etc/apt/sources.list.d/google.list
+          echo "deb http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/google.list
           sudo apt-get -y update
           sudo apt-get install -y google-chrome-stable
           VERSION=`google-chrome --version | egrep -o '[0-9]+.[0-9]+' | head -1`
