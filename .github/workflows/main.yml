@@ -18,18 +18,18 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           check-latest: true
       - run: npm install --global yarn
-     - name: Setup chrome driver environment
-       run: |
-         sudo apt-get update
-         sudo apt-get clean
-         sudo apt-get install -y wget
-         wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add
-         echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list
-         sudo apt-get -y update
-         sudo apt-get install -y google-chrome-stable
-         VERSION=`google-chrome --version | egrep -o '[0-9]+.[0-9]+' | head -1`
-         npm i webdriver-manager@latest -D
-         npm i chromedriver --chromedriver_version=$VERSION -D
+      - name: Setup chrome driver environment
+        run: |
+          sudo apt-get update
+          sudo apt-get clean
+          sudo apt-get install -y wget
+          wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add
+          echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list
+          sudo apt-get -y update
+          sudo apt-get install -y google-chrome-stable
+          VERSION=`google-chrome --version | egrep -o '[0-9]+.[0-9]+' | head -1`
+          npm i webdriver-manager@latest -D
+          npm i chromedriver --chromedriver_version=$VERSION -D
       - run: npm install
       - run: npm test
       - run: yarn install
