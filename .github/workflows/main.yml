@@ -16,11 +16,23 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ env.NODE_VERSION }}
-          check-latest: true
       - run: npm install --global yarn
+      - name: Setup chrome driver environment
+        run: |
+          sudo apt-get update
+          sudo apt-get clean
+          sudo apt-get install -y wget
+          wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add
+          sudo touch /etc/apt/sources.list.d/google.list
+          echo "deb http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/google.list
+          sudo apt-get -y update
+          sudo apt-get install -y google-chrome-stable
+          VERSION=`google-chrome --version | egrep -o '[0-9]+.[0-9]+' | head -1`
+          npm i webdriver-manager@latest -D
+          npm i chromedriver --chromedriver_version=$VERSION -D
       - run: npm install
       - run: npm test
-      - run: yarn
+      - run: yarn install
       - name: Install database client
         run: |
           sudo apt-get install sqlite3
@@ -30,15 +42,34 @@ jobs:
           gem install bundler
           gem install execjs -v '2.7.0'
           bundler install
+      - run: bundler exec rails assets:precompile
       - name: Create database
         run: |
           bundler exec rails db:create RAILS_ENV=test
           bundler exec rails db:migrate RAILS_ENV=test
       - name: Run tests
         run: bundler exec rspec  
+        env:
+          store_name:  ${{ secrets.STORE_NAME }}
+          store_owner_name: ${{ secrets.STORE_OWNER_NAME }}
+          store_owner_email: ${{ secrets.STORE_OWNER_EMAIL }}
+          store_owner_twitter: ${{ secrets.STORE_OWNER_TWITTER }}
+          default_currency: ${{ secrets.DEFAULT_CURRENCY }}
+          file_expiry_hours: ${{ secrets.FILE_EXPIRY_HOURS }}
+          file_max_downloads: ${{ secrets.FILE_MAX_DOWNLOADS }}
+          paypal_client_id: ${{ secrets.PAYPAL_CLIENT_ID }}
+          store_host: ${{ secrets.STORE_HOST }}
+          store_port: ${{ secrets.STORE_PORT }}
+          paypal_mock_cc_no: ${{ secrets.PAYPAL_MOCK_CC_NO }}
+          paypal_mock_cc_exp: ${{ secrets.PAYPAL_MOCK_CC_EXP }}
+          paypal_mock_cc_cvv: ${{ secrets.PAYPAL_MOCK_CC_CVV }}
       - name: Upload coverage results    
         uses: actions/upload-artifact@master
         if: always()
         with:
-          name: coverage-report
-          path: coverage              
+          name: my-artifact
+          path: |
+            ${{ github.workspace }}/coverage
+            ${{ github.workspace }}/tmp/capybara/
+      - name: Download all workflow run artifacts
+        uses: actions/download-artifact@v2

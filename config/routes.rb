@@ -1,3 +1,4 @@
+Rails.application.routes.default_url_options = { host: "http://#{ENV['store_host']}", port: ENV['store_port'] }
 Rails.application.routes.draw do
   namespace :admin do
     controller :pages do

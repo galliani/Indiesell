@@ -29,13 +29,24 @@
     <br>
     <hr>
     <div class="buynow">
-      <paypal-button
-        refer="paypal-container-<%= product.id.to_s %>"
-        client-id="<%= ENV['paypal_client_id'] %>"
-        currency-code="<%= product.price_currency %>"
-        price-str="<%= product.price.to_s %>"
-        product-description="<%= product.name %>"
-        product-id="<%= product.id %>"
+      <vue-paypal-smart-payment-buttons
+        @paypal-order-created="processing"
+        @paypal-order-approved="finishing"
+        @paypal-order-failed="failing"
+        button-unique-reference="paypal-container-<%= product.id.to_s %>"
+        v-bind:cart="{
+          intent: 'CAPTURE',
+          items: [
+            {
+              reference_id: '<%= product.id %>',
+              description: '<%= product.name %>',
+              amount: {
+                currency_code: '<%= product.price_currency %>',
+                value: <%= product.price.to_s %>
+              }
+            }
+          ]
+        }"
       />
     </div>
   </div>
