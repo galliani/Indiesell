@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_25_141701) do
+ActiveRecord::Schema.define(version: 2020_12_09_103058) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2020_11_25_141701) do
     t.string "serial_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_free", default: false
   end
 
   create_table "purchases", force: :cascade do |t|
@@ -70,6 +71,8 @@ ActiveRecord::Schema.define(version: 2020_11_25_141701) do
     t.string "customer_email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "is_free", default: false
+    t.boolean "has_been_sent", default: false
     t.index ["gateway_customer_id"], name: "index_purchases_on_gateway_customer_id"
     t.index ["product_id"], name: "index_purchases_on_product_id"
     t.index ["serial_number"], name: "index_purchases_on_serial_number"

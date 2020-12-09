@@ -9,6 +9,22 @@ module Store
     def show
     end
 
+    def create
+      permitted_params  = params.require(:purchase).permit(:customer_email, :product_id)
+      purchase          = Purchase.new(permitted_params)
+      purchase.is_free  = purchase.product&.is_free
+
+      if purchase.save
+        flash[:notice] = 'Free purchase is successful!'
+
+        redirect_to store_success_purchase_path(purchase)
+      else
+        flash[:alert] = 'Something is wrong with your free purchase'
+
+        render '/'
+      end
+    end
+
     def success
     end
 

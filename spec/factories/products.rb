@@ -11,6 +11,10 @@ FactoryBot.define do
       is_live     { false }
     end
 
+    trait :free do
+      is_free     { false }
+    end
+
     trait :with_pictures_for_store do
       display_picture { 
         fixture_file_upload(Rails.root.join('spec', 'fixtures', 'files', 'product-display-pic.png'), 'image/png')
