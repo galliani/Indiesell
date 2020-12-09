@@ -16,7 +16,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ env.NODE_VERSION }}
-          check-latest: true
       - run: npm install --global yarn
       - name: Setup chrome driver environment
         run: |
