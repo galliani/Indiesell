@@ -18,12 +18,12 @@ RSpec.describe 'Customer checkouts on a product', type: :system, js: true do # 2
     page.should have_selector 'iframe'
 
     parent_iframe = find(paypal_smart_button_iframe)
-    
+    puts page.body
     page.within_frame(parent_iframe) do
       page.should have_selector paypal_pay_with_card_button
       page.first(paypal_pay_with_card_button).click
       sleep(5)
-
+      puts page.body
       page.should have_selector  paypal_card_payment_iframe
       @card_payment_iframe = find(paypal_card_payment_iframe)
 

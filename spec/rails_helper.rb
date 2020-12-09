@@ -7,6 +7,8 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
+require 'capybara-screenshot/rspec'
+
 # WEBMOCK
 # require 'webmock/rspec'
 # # these lines below required to make chromedriver works

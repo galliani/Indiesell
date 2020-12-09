@@ -68,5 +68,9 @@ jobs:
         uses: actions/upload-artifact@master
         if: always()
         with:
-          name: coverage-report
-          path: coverage
+          name: my-artifact
+          path: |
+            coverage
+            tmp/capybara/
+      - name: Download all workflow run artifacts
+        uses: actions/download-artifact@v2
