@@ -70,7 +70,7 @@ jobs:
         with:
           name: my-artifact
           path: |
-            coverage
-            tmp/capybara/
+            ${{ github.workspace }}/coverage
+            ${{ github.workspace }}/tmp/capybara/
       - name: Download all workflow run artifacts
         uses: actions/download-artifact@v2
