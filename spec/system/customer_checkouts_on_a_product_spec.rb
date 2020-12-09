@@ -8,7 +8,8 @@ RSpec.describe 'Customer checkouts on a product', type: :system, js: true do # 2
   let!(:product) { create(:product) }
   # SELECTORS
   let(:paypal_smart_button_iframe)  { 'iframe[title=PayPal]' }
-  let(:paypal_pay_with_card_button) { '.paypal-button-number-1' } # or use '[aria-label="Debit or Credit Card"]'
+  # use '[aria-label="Debit or Credit Card"]' or '.paypal-button-number-1'
+  let(:paypal_pay_with_card_button) { '[aria-label="Debit or Credit Card"]' }
   let(:paypal_card_payment_iframe)  { 'iframe[title="paypal_card_fields"]' }
 
   before do
@@ -18,7 +19,7 @@ RSpec.describe 'Customer checkouts on a product', type: :system, js: true do # 2
     page.should have_selector 'iframe'
 
     parent_iframe = find(paypal_smart_button_iframe)
-    
+
     page.within_frame(parent_iframe) do
       page.should have_selector paypal_pay_with_card_button
       page.first(paypal_pay_with_card_button).click
