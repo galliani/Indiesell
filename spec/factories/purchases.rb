@@ -15,8 +15,10 @@ FactoryBot.define do
       is_paid { true }
 
       after :create do |purchase|
-        purchase.build_consumable_links if purchase.product
-        purchase.save
+        if purchase.product
+          purchase.links = ConsumableLinksCreator.new.perform(product: purchase.product)
+          purchase.save
+        end
       end
     end
   end
