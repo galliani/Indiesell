@@ -1,5 +1,5 @@
 class CustomerMailer < ActionMailer::Base
-  def purchase_completed_email(purchase)
+  def completed_purchase_email(purchase:)
     @purchase = purchase
 
     mail(

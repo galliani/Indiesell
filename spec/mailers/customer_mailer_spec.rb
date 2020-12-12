@@ -3,11 +3,11 @@
 require 'rails_helper'
 
 RSpec.describe CustomerMailer, type: :mailer do
-  describe '#purchase_completed_email' do
+  describe '#completed_purchase_email' do
     # payload:
     let(:sample_purchase) { create(:purchase, :successful) }
     # service:
-    let(:mail) { described_class.purchase_completed_email(purchase_id: sample_purchase.id) }
+    let(:mail) { described_class.completed_purchase_email(purchase: sample_purchase) }
 
     it 'is able to send the email' do
       expect { mail.deliver_now }.to change { ActionMailer::Base.deliveries.count }.by(1)

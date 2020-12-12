@@ -15,6 +15,8 @@ module Store
       purchase.is_free  = purchase.product&.is_free
 
       if purchase.save
+        CustomerMailer.completed_purchase_email(purchase: purchase).deliver_now
+
         flash[:notice] = 'Free purchase is successful!'
 
         redirect_to success_store_purchase_path(purchase)
