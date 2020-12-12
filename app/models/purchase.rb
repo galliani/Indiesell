@@ -7,6 +7,8 @@ class Purchase < ApplicationRecord
   belongs_to  :product
   has_many    :links
 
+  delegate :name, to: :product, prefix: true, allow_nil: true
+
   monetize :price_cents
 
   def build_consumable_links

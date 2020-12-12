@@ -64,6 +64,16 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors  = false
   config.action_mailer.perform_caching        = false
   config.action_mailer.default_url_options    = { host: "http://#{ENV['store_host']}", port: ENV['store_port'] }
+  config.action_mailer.perform_deliveries     = true
+  config.action_mailer.delivery_method        = :smtp
+  config.action_mailer.smtp_settings          = {
+    address:                                    ENV['mailer_smtp_address'],
+    port:                                       ENV['mailer_smtp_port'],
+    user_name:                                  ENV['mailer_smtp_user_name'],
+    password:                                   ENV['mailer_smtp_password'],
+    authentication:                             ENV['mailer_smtp_authentication'],
+    enable_starttls_auto:                       true
+  }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).

@@ -1,0 +1,8 @@
+<%= form_tag "/search", class: "form-inline" do %>
+  <div class="form-group mx-sm-3 mb-2">
+    <%= label_tag :q, "Search:", class: "sr-only" %>
+    <%= text_field_tag :q, class: "form-control-plaintext" %>
+  </div>
+
+  <button type="submit" class="btn btn-primary mb-2">Confirm identity</button>
+<% end %>

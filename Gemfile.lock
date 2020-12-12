@@ -244,6 +244,11 @@ GEM
     nio4r (2.5.4)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
+    octicons (11.2.0)
+      nokogiri (>= 1.6.3.1)
+    octicons_helper (11.2.0)
+      octicons (= 11.2.0)
+      rails
     parallel (1.19.2)
     parser (2.7.2.0)
       ast (~> 2.4.1)
@@ -457,6 +462,7 @@ DEPENDENCIES
   listen (~> 3.2)
   mini_magick
   money-rails
+  octicons_helper
   paypal-checkout-sdk
   pg
   puma (~> 4.1)

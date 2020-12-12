@@ -38,7 +38,7 @@ Rails.application.configure do
   # --- MAILER --- #
   config.action_mailer.delivery_method        = :test
   config.action_mailer.perform_caching        = false
-  config.action_mailer.default_url_options    = { host: "http://#{ENV['store_host']}" }
+  config.action_mailer.default_url_options    = { host: "http://#{ENV['store_host']}", port: ENV['store_port'] }
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr

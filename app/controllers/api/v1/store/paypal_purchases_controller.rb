@@ -35,6 +35,8 @@ module API
           purchase.build_consumable_links
 
           if purchase.save
+            CustomerMailer.completed_purchase_email(purchase: purchase).deliver_now
+
             render status: :ok, json: { purchase_code: purchase.id }
           else
             render status: :unprocessable_entity, json: {}

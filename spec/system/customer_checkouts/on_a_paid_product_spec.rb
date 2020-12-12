@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Customer checkouts on a product', type: :system, js: true do # 26.64 seconds
+RSpec.describe 'Customer checkouts on a paid product', type: :system, js: true do # 26.64 seconds
   subject { page }
 
   let!(:product) { create(:product) }
@@ -56,21 +56,22 @@ RSpec.describe 'Customer checkouts on a product', type: :system, js: true do # 2
     sleep(10)
   end
 
-  describe 'payment success page' do
-    it 'should be ok' do
-      # The iframe should be gone by now
-      expect(subject).to have_no_selector paypal_smart_button_iframe
-      
-      # Should be redirected to the /success payment page
-      # describe 'payment success page'
-      expect(subject).to have_selector   '#payment-success-message'
-      expect(subject).to have_content    "#{product.price.currency.symbol}#{product.price.to_i}"
+  it 'should be ok' do
+    # The iframe should be gone by now
+    expect(subject).to have_no_selector paypal_smart_button_iframe
+    
+    # Should be redirected to the /success payment page
+    # describe 'payment success page'
+    expect(subject).to have_selector   '#payment-success-message'
+    expect(subject).to have_content    "#{product.price.currency.symbol}#{product.price.to_i}"
 
-      # Sanity check
-      new_purchase = Purchase.last
-      expect(new_purchase.price_cents).to eq product.price_cents
-      expect(new_purchase.price).to eq product.price
-    end
+    # Sanity check
+    new_purchase = Purchase.last
+    expect(new_purchase.price_cents).to eq product.price_cents
+    expect(new_purchase.price).to eq product.price
+
+    # Assert mailer has been sent
+    expect(ActionMailer::Base.deliveries.count).to eq 1
   end
 
   # These methods are only used in the paypal checkout form for now,

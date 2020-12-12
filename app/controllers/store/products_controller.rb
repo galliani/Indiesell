@@ -6,6 +6,8 @@ module Store
 
     def index
       @products = Product.live
+
+      @free_purchase = Purchase.new
     end
   end
 end

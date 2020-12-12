@@ -1,16 +1,24 @@
 <div class="jumbotron text-center" id="payment-success-message">
-  <h1 class="display-3">Your Payment is Successful</h1>
+  <h1 class="display-3">Your Purchase is Successful</h1>
   <p><%= money_without_cents_and_with_symbol @purchase.price %></p>
-  <p class="lead">
-    <strong>Thank you! Please click the button below </strong> for further instructions on how to access your purchase.
-  </p>
-  <p class="lead">
-    <%=
-      link_to 'Continue to your purchase page',
-              store_purchase_path(@purchase),
-              class: "btn btn-primary btn-lg"
-    %>
-  </p>
+
+  <% if @purchase.is_free %>
+    <p class="lead">
+      <strong>Thank you, </strong> we have sent the download link to your email
+    </p>
+  <% else %>
+    <p class="lead">
+      <strong>Thank you! Please click the button below </strong> for further instructions on how to access your purchase.
+    </p>
+    <p class="lead">
+      <%=
+        link_to 'Continue to your purchase page',
+                store_purchase_path(@purchase),
+                class: "btn btn-primary btn-lg"
+      %>
+    </p>
+  <% end %>
+
   <br>
   <hr>
   <p>
