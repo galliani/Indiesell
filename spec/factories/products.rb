@@ -12,7 +12,7 @@ FactoryBot.define do
     end
 
     trait :free do
-      is_free     { false }
+      is_free     { true }
     end
 
     trait :with_pictures_for_store do

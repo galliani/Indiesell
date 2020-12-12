@@ -17,7 +17,7 @@ module Store
       if purchase.save
         flash[:notice] = 'Free purchase is successful!'
 
-        redirect_to store_success_purchase_path(purchase)
+        redirect_to success_store_purchase_path(purchase)
       else
         flash[:alert] = 'Something is wrong with your free purchase'
 

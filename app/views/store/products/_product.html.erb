@@ -11,7 +11,13 @@
   <div class="col-md-7">
     <h2 class="product-name"><a href="<%= root_path %>"><%= product.name %></a></h2>
     <h3 class="product-price header-text">
-      <%= money_without_cents_and_with_symbol product.price %>
+      <%= 
+        if product.is_free?
+          'FREE'
+        else          
+          money_without_cents_and_with_symbol product.price
+        end
+      %>
     </h3>
     <p class="intro"><%= product.description %></p>
 
@@ -28,8 +34,8 @@
 
     <br>
     <hr>
-    <% unless product.is_free? %>    
-      <div class="buynow">
+    <% if product.is_free? %>    
+      <div class="downloadnow">
         <%= form_for([:store, @free_purchase], class: "form-row align-items-center") do |f| %>
           <%= f.hidden_field :product_id, value: product.to_param  %>
           <div class="form-row align-items-center">
@@ -53,7 +59,7 @@
         <% end %>
       </div>
     <% else %>
-      <div class="downloadnow">
+      <div class="buynow">
         <vue-paypal-smart-payment-buttons
           @paypal-order-created="processing"
           @paypal-order-approved="finishing"

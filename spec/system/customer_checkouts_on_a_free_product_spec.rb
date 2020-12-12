@@ -5,11 +5,11 @@ require 'rails_helper'
 RSpec.describe 'Customer checkouts on a free product', type: :system, js: true do # 26.64 seconds
   subject { page }
 
-  let!(:product) { create(:product, :free) }
+  let!(:sample_product) { create(:product, :free) }
+
+  before { visit root_path }
 
   describe 'product listed' do
-    let(:sample_product) { live_products.first }
-
     it 'should display free download button' do
       within("#product-#{sample_product.id}") do
         expect(subject).to have_selector '.downloadnow'
@@ -32,7 +32,7 @@ RSpec.describe 'Customer checkouts on a free product', type: :system, js: true d
     end
 
     it 'should display thank you notification' do
-      expect(subject).to have_content "Thank you, we'll send you the download link"
+      expect(subject).to have_content 'Thank you, we have sent the download link to your email'
     end
   end
 end
