@@ -13,17 +13,36 @@ store_host: 'localhost:3000'
 file_expiry_hours: '24'
 file_max_downloads: '10'
 
-# all required
+# --- active storage provider configs --- #
+# FILL and use whichever provider you use
+# :microsoft
 azure_storage_account_name: ""
 azure_storage_access_key: ""
 azure_container: ""
+# :amazon
+aws_access_key_id = ''
+aws_secret_access_key = ''
+aws_region = ''
+aws_bucket = ''
+# :google
+gcs_project = ''
+gcs_credentials = ''
+gcs_bucket = ''
+# --- active storage provider configs --- #
 
 development:
+  active_storage_provider: "local"
   paypal_client_id: PAYPAL_CLIENT_ID
 
 test:
+  active_storage_provider: "test"
   paypal_client_id: PAYPAL_CLIENT_ID
 
 production:
+  active_storage_provider: "local" # "local" or "microsoft" or "amazon" or "google"
   paypal_client_id: PAYPAL_CLIENT_ID
-  DATABASE_URL:
+  mailer_smtp_address: ""
+  mailer_smtp_port: ""
+  mailer_smtp_user_name: ""
+  mailer_smtp_password: ""
+  mailer_smtp_authentication: ""
