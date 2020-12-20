@@ -30,7 +30,6 @@ gem 'administrate-field-money'
 
 gem 'active_hash'
 gem 'acts_as_hashids'
-gem 'azure-storage'
 gem 'clearance'
 gem 'figaro'
 gem 'money-rails'
@@ -38,8 +37,15 @@ gem 'ransack'
 gem 'sucker_punch'
 gem 'wannabe_bool'
 
-# PAYMENT
- gem 'paypal-checkout-sdk'
+# ActiveStorage providers
+case ENV['active_storage_provider']
+when 'google'
+  gem 'google-cloud-storage'
+when 'amazon'
+  gem 'aws-sdk-s3' 
+else
+  gem 'azure-storage'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -16,18 +16,18 @@ file_max_downloads: '10'
 # --- active storage provider configs --- #
 # FILL and use whichever provider you use
 # :microsoft
-azure_storage_account_name: ""
-azure_storage_access_key: ""
-azure_container: ""
+azure_storage_account_name: ''
+azure_storage_access_key: ''
+azure_container: ''
 # :amazon
-aws_access_key_id = ''
-aws_secret_access_key = ''
-aws_region = ''
-aws_bucket = ''
+aws_access_key_id: ''
+aws_secret_access_key: ''
+aws_region: ''
+aws_bucket: ''
 # :google
-gcs_project = ''
-gcs_credentials = ''
-gcs_bucket = ''
+gcs_project: ''
+gcs_credentials: ''
+gcs_bucket: ''
 # --- active storage provider configs --- #
 
 development:
