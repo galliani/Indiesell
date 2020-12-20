@@ -50,6 +50,7 @@ jobs:
       - name: Run tests
         run: bundler exec rspec  
         env:
+          active_storage_provider: ${{ secrets.ACTIVE_STORAGE_PROVIDER }}
           store_name:  ${{ secrets.STORE_NAME }}
           store_owner_name: ${{ secrets.STORE_OWNER_NAME }}
           store_owner_email: ${{ secrets.STORE_OWNER_EMAIL }}
