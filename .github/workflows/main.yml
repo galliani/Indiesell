@@ -42,7 +42,10 @@ jobs:
           gem install bundler
           gem install execjs -v '2.7.0'
           bundler install
-      - run: bundler exec rails assets:precompile
+      - name: Precompile assets          
+        run: bundler exec rails assets:precompile
+        env:
+          active_storage_provider: ${{ secrets.ACTIVE_STORAGE_PROVIDER }}      
       - name: Create database
         run: |
           bundler exec rails db:create RAILS_ENV=test
